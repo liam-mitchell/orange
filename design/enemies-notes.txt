@@ -1,0 +1,41 @@
+ENEMIES
+
+Two fights to start:
+	- One single-target fight
+	- One AOE-ish fight
+
+Single-target fight needs:
+	- A boss
+	  - Model
+	  - Animations
+	  - Textures
+	  - Particles
+	  - Abilities
+	  - Stats
+
+AOE fight needs:
+	- Many enemies
+	  - With all the same things as the boss..
+	  - But not quite as many! Only a special ability or two per enemy
+
+Fights need:
+	- Enough special abilities to be interesting
+	- Some environmental things unique to the fight
+
+Single-target boss:
+	- Big demon!
+	- Leap attack
+	- Stun + big crit
+	- Fire nova
+	- Rock drops!
+	- Summon one add on someone
+
+AOE boss:
+	- Waves of enemies from different directions with minibosses
+	- Minibosses:
+	  - Fire breath (cone AOE)
+	  - Quick high-damage leapers
+	  - Big hounds with knockback
+	  - Tanky big skeleton with healer waves
+	- Area:
+	  - Lava rivers!

@@ -1,0 +1,54 @@
+TIMELINE
+
+--		item		--										 --		time estimate	--
+
+Blender
+	- Characters
+	  - Character models
+	  - Animations
+	  	- Running
+		- Idle
+		- Attacking
+		- Ability animations
+	  - Textures
+
+	- Enemies
+	  - Enemy models
+	  - Animations (same as players - no idle?)
+	  - Textures
+
+	- Map
+	  - Floors and walls
+	  	- Textures
+		- Meshes
+	  - Objects
+	  	- Textures
+		- Meshes
+
+Unity
+	- General controllers
+	  - Camera
+	  - Input
+	  - Character movement
+
+	- Character controllers
+	  - Abilities
+	  - Animations
+	  - Pathfinding (???)
+
+	- Enemy controllers
+	  - AI
+	  - Pathfinding
+	  - Special abilities
+
+	- Map
+	  - Meshes
+	  - Physics objects
+	  - Pathfinding grid? (or in the enemy AI...)
+
+	- Networking
+	  - Big ???
+
+	- Gear
+	  - Not quite as big ???
+

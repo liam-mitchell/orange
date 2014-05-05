@@ -1,0 +1,73 @@
+CHARACTERS
+
+Four characters to start:
+	- Rogue
+	- Mage
+	- Cleric
+	- Fighter
+
+Each character needs:
+	- Basic abilities (3 or 4?...)
+	- Models
+	  - Textures
+	  - Particles (???)
+	- Animations
+	  - Attacks
+	  - Abilities (are these going to be separate from attacks?...)
+	  - Movement
+	- Stats (more below)
+	- Basic gear?...
+	  - Probably no models for gear
+	- Some backstory?...
+
+Stats:
+	- Keep it simple: strength, agility, intelligence (for now!)
+	- Strength:
+	  - HP
+	  - Melee damage
+	- Agility
+	  - Armor/evasion (???)
+	  - Ranged damage
+	- Intelligence
+	  - Mana
+	  - Magic damage
+
+	- OR damage based on hero type (so dota! but it is good...)
+
+Basic abilities (general):
+	- Movement cooldowns for EVERYONE! =)
+	- Should attacks be abilities or just attacks? Sort of like abilities... but attacks are probably easier / less hardcore
+	- three class-specific abilities (for now!)
+
+Rogue:
+	- Single-target mobile melee DPS
+	- Movement: low-cooldown tumble
+	- Attacks: quick melee attack, med damage
+	- Backstab: long-cd melee crit / slow / bleed from behind
+	- Blind: miss, can't move? single-target
+	- Blink strike: jump to behind target (riki!)
+
+Fighter:
+	- Tanky AOE melee DPS
+	- Movement: mid-cooldown charge, knockback/stun?
+	- Attacks: slow, high-damage melee attacks
+	- Shield slam (or something?) - single target melee stun
+	- Bladestorm - AOE melee attacks, maybe crits/bonus damage?
+	- Damage reflect
+
+Cleric:
+	- Ranged attack healer
+	- Movement: maybe none? or high-cooldown charge?
+	- Attacks: ranged spells, mid-damage
+	- Single-target heal
+	- AOE heal
+	- Divine storm - channeled self-centered AOE
+	- Damage-immune - time or damage absorbed?
+
+Mage:
+	- Ranged attack squishy DPS
+	- Movement: blink, low CD
+	- Attacks: ranged spells, high damage
+	- Fireball: big AOE damage
+	- Polymorph: single-target CC
+	- Ice nova: self-centered AOE CC + damage

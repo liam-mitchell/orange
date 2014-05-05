@@ -1,0 +1,33 @@
+MAP
+
+Layout:
+	- Small
+	- Three rooms
+	  - Intro room
+	  	- Small room, stone, jail cell?...
+	  - AOE boss
+	  	- Lava rivers
+		- Large cavern
+		- Hewn stone walls
+	  - Single boss
+	  	- Chamber with chasm
+		- Old furniture
+		- Worked stone walls
+		- Pillars
+
+Blender:
+	- Base layout (square and easy to manage)
+	  - Textures for ground / walls default
+	- Objects to fill in + texture
+	  - Rocks
+	  - Furniture
+	  - Lava (???)
+	  - Pillars
+	  - Jail bars / door
+
+Unity:
+	- Add physics objects
+	  - Keep them simple! Planes for outsides, then add simple objects
+	- Implement pathfinding data structure (???)
+	  - Have to be able to add things to it!
+	

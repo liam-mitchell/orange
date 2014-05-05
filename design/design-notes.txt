@@ -1,0 +1,44 @@
+NEEDED:
+
+Blender
+	- Character models
+	  - Models
+	  - Animations
+	  	- Attacks
+		- Standard animations (walk, run, etc)
+	  - Textures
+
+	- Enemies
+	  - Models
+	  - Background
+	  - Choose a theme!
+
+	- Map
+	  - Terrain
+	  - Objects
+	  - Setting (theme above!)
+
+Unity
+	- Character controllers
+	  - Abilities, movements, animation linking (do animations in Unity?...)
+
+	- Camera controllers
+	- Input controllers (design separate from characters? probably...)
+
+	- Map
+	  - Physics
+	  - Placement / setup
+	  - Design something interesting!
+
+	- Enemies
+	  - AI
+	  - Abilities, animations, etc... just like players
+
+	- Networking
+	  - ??? (leave lots of time! do before enemies?...)
+
+	- Experience
+	  - Also ??? (Leave this out I think... doesn't lend itself well to short games, non-linear games or procedural enemies)
+
+	- Gear
+	  - More ???
