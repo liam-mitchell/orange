@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 public class CharacterControl : IControl
 {
+	[HideInInspector] public bool selected;
 	// Use this for initialization
 	void Start () {
-		abilities_ = new List<IAbility> {
-			GetComponent<CharacterMovement>()
-		};
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		foreach (IAbility a in abilities_)
+		if (!selected) return;
+		
+		foreach (IAbility a in abilities)
 		{
-			Debug.Log("There's one!");
 			if (Input.GetMouseButtonDown(1)) a.on_rmouse();
 		}
 	}

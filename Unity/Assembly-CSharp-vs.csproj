@@ -44,13 +44,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Characters\CharacterControl.cs" />
      <Compile Include="Assets\Scripts\Characters\CharacterMovement.cs" />
      <Compile Include="Assets\Scripts\IAbility.cs" />
      <Compile Include="Assets\Scripts\IControl.cs" />
-     <Compile Include="Assets\Scripts\Layers.cs" />
-     <Compile Include="Assets\Scripts\PlayerControl.cs" />
+     <Compile Include="Assets\Scripts\Players\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Players\Player.cs" />
+     <Compile Include="Assets\Scripts\Players\UserInterface.cs" />
+     <Compile Include="Assets\Scripts\Utilities\Layers.cs" />
+     <Compile Include="Assets\Scripts\Utilities\Selectable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

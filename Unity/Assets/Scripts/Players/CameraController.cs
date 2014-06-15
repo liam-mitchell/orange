@@ -16,7 +16,6 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		move();
-//		clamp_height();
 	}
 	
 	void move() {
@@ -31,23 +30,6 @@ public class CameraController : MonoBehaviour {
 		}
 		if (Input.mousePosition.y >= Screen.height - 50) {
 			transform.position += Vector3.forward * speed * Time.deltaTime;
-		}
-	}
-	
-	void clamp_height() {
-		RaycastHit info;
-		if (Physics.Raycast(transform.position, Vector3.down, out info))
-//			&& info.collider.name == "env-base") 
-		{
-			if ((transform.position - info.point).magnitude < height - .25f) {
-				transform.position += Vector3.up * upspeed * Time.deltaTime;
-			}
-			else if ((transform.position - info.point).magnitude > height + .25f) {
-				transform.position -= Vector3.up * upspeed * Time.deltaTime;
-			}
-			else {
-				transform.position = info.point + Vector3.up * height;
-			}
 		}
 	}
 }

@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class IAbility : MonoBehaviour {
-	public CharacterControl control;
-	protected Animator animator_;
+	public IControl control;
 	protected bool active_;
 	protected int priority_;
 	
@@ -17,9 +16,8 @@ public class IAbility : MonoBehaviour {
 	
 	}
 	
-	protected virtual void update_animator() { /* empty */ }
-	
 	public virtual void on_rmouse() { /* empty */ }
+	public virtual void on_lmouse() { /* empty */ }
 	
 	/**
 	 * interrupt

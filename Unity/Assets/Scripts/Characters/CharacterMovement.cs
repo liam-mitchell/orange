@@ -16,6 +16,8 @@ public class CharacterMovement : IAbility {
 	private Vector3 move_target_;
 	private bool moving_;
 	
+	private Animator animator_;
+	
 	public override bool on_interrupt(int priority, IAbility source)
 	{
 		if (source == this) return true;
@@ -31,7 +33,6 @@ public class CharacterMovement : IAbility {
 	
 	public override void on_rmouse()
 	{
-		Debug.Log("on_rmouse() (character_movement)");
 		if (control.interrupt_all(priority_, this)) {
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -44,10 +45,9 @@ public class CharacterMovement : IAbility {
 		}
 	}
 	
-	protected override void update_animator()
+	private void update_animator()
 	{
 		animator_.SetBool("moving", moving_);
-		Debug.Log("animator updated");
 	}
 	
 	public void update_target(Vector3 target)
@@ -69,6 +69,7 @@ public class CharacterMovement : IAbility {
 	{
 		if (turn_update_) {
 			Vector3 direction = move_target_ - transform.position;
+			direction.y = 0;
 			turn_start_ = transform.rotation;
 			turn_target_ = Quaternion.LookRotation(direction);
 			turn_duration_ = Quaternion.Angle(turn_start_, turn_target_)
@@ -85,8 +86,8 @@ public class CharacterMovement : IAbility {
 	
 	private void move()
 	{
-		Vector3 direction = move_target_ - transform.position;
-		if ((transform.position - move_target_).magnitude < .05) {
+		Vector3 direction = (move_target_ + Vector3.up * .1f) - transform.position;
+		if (direction.magnitude < .05) {
 			moving_ = false;
 			active_ = false;
 		}
@@ -104,22 +105,32 @@ public class CharacterMovement : IAbility {
 			moving_ = true;
 		}
 	}
+	
+	private void clamp_height() {
+		RaycastHit hit;
+		if (Physics.Raycast(transform.position, Vector3.down, out hit))
+		{
+			transform.position = hit.point + Vector3.up * .1f;
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
 		animator_ = GetComponent<Animator>();
+		control = GetComponent<CharacterControl>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		clamp_height();
 	}
 	
 	void FixedUpdate() {
 		if (active_) {
 			update_turn();
 			update_move();
-			update_animator();
 		}
+		
+		update_animator();
 	}
 }
