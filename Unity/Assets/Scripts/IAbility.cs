@@ -18,6 +18,7 @@ public class IAbility : MonoBehaviour {
 	
 	public virtual void on_rmouse() { /* empty */ }
 	public virtual void on_lmouse() { /* empty */ }
+	public virtual void on_space() { /*empty */ }
 	
 	/**
 	 * interrupt

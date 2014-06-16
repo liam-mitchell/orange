@@ -16,6 +16,7 @@ public class CharacterControl : IControl
 		foreach (IAbility a in abilities)
 		{
 			if (Input.GetMouseButtonDown(1)) a.on_rmouse();
+			if (Input.GetKeyDown (KeyCode.Space)) a.on_space ();
 		}
 	}
 

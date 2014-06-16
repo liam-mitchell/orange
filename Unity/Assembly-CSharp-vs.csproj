@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Characters\CharacterControl.cs" />
      <Compile Include="Assets\Scripts\Characters\CharacterMovement.cs" />
+     <Compile Include="Assets\Scripts\Characters\Rogue\RogueTumble.cs" />
      <Compile Include="Assets\Scripts\IAbility.cs" />
      <Compile Include="Assets\Scripts\IControl.cs" />
      <Compile Include="Assets\Scripts\Players\CameraController.cs" />

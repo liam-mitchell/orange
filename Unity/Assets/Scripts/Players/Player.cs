@@ -12,7 +12,6 @@ public class Player : MonoBehaviour {
 	{
 		if (Input.GetMouseButtonDown(0)) {
 			selected = userInterface.select_object();
-			Debug.Log(selected);
 		}
 	}
 	
@@ -25,6 +24,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		update_input();
-		character_control_.selected = (selected == character);
+		if (selected == character) character_control_.selected = true;
+		else character_control_.selected = false;
 	}
 }

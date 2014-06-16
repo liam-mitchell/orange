@@ -20,8 +20,8 @@ public class CharacterMovement : IAbility {
 	
 	public override bool on_interrupt(int priority, IAbility source)
 	{
-		if (source == this) return true;
-		if (priority > priority_) {
+		if (source == this || !active_) return true;
+		if (priority >= priority_) {
 			moving_ = false;
 			turning_ = false;
 			turn_update_ = false;
