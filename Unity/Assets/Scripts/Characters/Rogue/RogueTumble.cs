@@ -16,7 +16,7 @@ public class RogueTumble : IAbility {
 	{
 		if (control.interrupt_all (priority_, this)) {
 			active_ = true;
-			tumble_start_ = transform.position;
+			tumble_start_ = transform.position + Vector3.up * .5f;
 			
 			RaycastHit hit;
 			if (Physics.Raycast (transform.position,
@@ -62,6 +62,7 @@ public class RogueTumble : IAbility {
 	{
 		animator_.SetBool("tumbling", active_);
 		Debug.Log (animator_.GetBool("tumbling"));
+		Debug.Log (animator_.GetCurrentAnimatorStateInfo(0).nameHash);
 	}
 
 	// Use this for initialization
