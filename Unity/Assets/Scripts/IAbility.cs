@@ -33,6 +33,11 @@ public class IAbility : MonoBehaviour {
 	 */
 	public virtual bool on_interrupt(int priority, IAbility source)
 	{
-		return true; // dummy - override in child classes
+		if (source == this || !active_) return true;
+		if (priority >= priority_) {
+			active_ = false;
+			return true;
+		}
+		else return false;
 	}
 }

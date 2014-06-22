@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterMovement : IAbility {
+public class UnitMovement : IAbility {
 	public float moveSpeed;
 	public float turnSpeed;
 	
@@ -105,14 +105,7 @@ public class CharacterMovement : IAbility {
 			moving_ = true;
 		}
 	}
-	
-	private void clamp_height() {
-		RaycastHit hit;
-		if (Physics.Raycast(transform.position, Vector3.down, out hit))
-		{
-			transform.position = hit.point + Vector3.up * .1f;
-		}
-	}
+
 
 	// Use this for initialization
 	void Start () {
@@ -122,7 +115,7 @@ public class CharacterMovement : IAbility {
 	
 	// Update is called once per frame
 	void Update () {
-		clamp_height();
+		
 	}
 	
 	void FixedUpdate() {

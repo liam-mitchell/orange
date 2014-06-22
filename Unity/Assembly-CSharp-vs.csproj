@@ -44,14 +44,16 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Characters\CharacterAttack.cs" />
      <Compile Include="Assets\Scripts\Characters\CharacterControl.cs" />
-     <Compile Include="Assets\Scripts\Characters\CharacterMovement.cs" />
      <Compile Include="Assets\Scripts\Characters\Rogue\RogueTumble.cs" />
      <Compile Include="Assets\Scripts\IAbility.cs" />
      <Compile Include="Assets\Scripts\IControl.cs" />
      <Compile Include="Assets\Scripts\Players\CameraController.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
      <Compile Include="Assets\Scripts\Players\UserInterface.cs" />
+     <Compile Include="Assets\Scripts\Units\UnitMovement.cs" />
+     <Compile Include="Assets\Scripts\Units\UnitStats.cs" />
      <Compile Include="Assets\Scripts\Utilities\Layers.cs" />
      <Compile Include="Assets\Scripts\Utilities\Selectable.cs" />
   </ItemGroup>

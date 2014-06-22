@@ -14,7 +14,8 @@ public class RogueTumble : IAbility {
 	
 	public override void on_space()
 	{
-		if (control.interrupt_all (priority_, this)) {
+		if (control.interrupt_all (priority_, this)
+			&& !active_) {
 			active_ = true;
 			tumble_start_ = transform.position + Vector3.up * .5f;
 			
@@ -35,16 +36,6 @@ public class RogueTumble : IAbility {
 		}
 	}
 	
-	public override bool on_interrupt(int priority, IAbility source)
-	{
-		if (source == this || !active_) return true;
-		if (priority >= priority_) {
-			active_ = false;
-			return true;
-		}
-		else return false;
-	}
-	
 	private void tumble()
 	{
 		transform.position = Vector3.Slerp(tumble_start_,
@@ -61,14 +52,12 @@ public class RogueTumble : IAbility {
 	private void update_animator()
 	{
 		animator_.SetBool("tumbling", active_);
-		Debug.Log (animator_.GetBool("tumbling"));
-		Debug.Log (animator_.GetCurrentAnimatorStateInfo(0).nameHash);
 	}
 
 	// Use this for initialization
 	void Start () {
 		animator_ = GetComponent<Animator>();
-		priority_ = 1;
+		priority_ = 2;
 		active_ = false;
 	}
 	
