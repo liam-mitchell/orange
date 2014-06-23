@@ -14,8 +14,10 @@ public class RogueTumble : IAbility {
 	
 	public override void on_space()
 	{
-		if (control.interrupt_all (priority_, this)
-			&& !active_) {
+		if (!(current_cooldown_ > 0)
+			&& !active_
+			&& control.interrupt_all (priority_, this)) 
+		{
 			active_ = true;
 			tumble_start_ = transform.position + Vector3.up * .5f;
 			
@@ -33,6 +35,8 @@ public class RogueTumble : IAbility {
 			
 			tumble_duration_ = (tumble_end_ - tumble_start_).magnitude / tumbleSpeed;
 			tumble_time_ = 0;
+			
+			current_cooldown_ = cooldown;
 		}
 	}
 	
@@ -67,7 +71,10 @@ public class RogueTumble : IAbility {
 			tumble ();
 		}
 		
+		if (current_cooldown_ > 0) {
+			current_cooldown_ -= Time.deltaTime;
+		}
+		
 		update_animator ();
-		Debug.Log (animator_);
 	}
 }

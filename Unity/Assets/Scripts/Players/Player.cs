@@ -17,12 +17,6 @@ public class Player : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Animator.StringToHash(\"rogue-walk\")");
-		Debug.Log (Animator.StringToHash("rogue-walk"));
-		Debug.Log ("Animator.StringToHash(\"rogue-tumble\")");
-		Debug.Log (Animator.StringToHash("rogue-tumble"));
-		Debug.Log ("Animator.StringToHash(\"rogue-idle\")");
-		Debug.Log (Animator.StringToHash("rogue-idle"));
 		selected = character;
 		character_control_ = character.GetComponent<CharacterControl>();
 	}

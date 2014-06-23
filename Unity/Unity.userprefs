@@ -1,6 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Players\UserInterface.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Characters\CharacterAttack.cs" Line="75" Column="37" />
+      <File FileName="Assets\Scripts\Characters\Rogue\RogueShank.cs" Line="27" Column="48" />
+      <File FileName="Assets\Scripts\IAbility.cs" Line="24" Column="38" />
+      <File FileName="Assets\Scripts\Players\UserInterface.cs" Line="5" Column="30" />
+      <File FileName="Assets\Scripts\Players\Player.cs" Line="13" Column="34" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
@@ -10,10 +17,10 @@
                 <Node name="Characters" expanded="True">
                   <Node name="Rogue" expanded="True" />
                 </Node>
-                <Node name="Players" expanded="True" />
-                <Node name="Units" expanded="True">
-                  <Node name="UnitMovement.cs" selected="True" />
+                <Node name="Players" expanded="True">
+                  <Node name="UserInterface.cs" selected="True" />
                 </Node>
+                <Node name="Units" expanded="True" />
                 <Node name="Utilities" expanded="True" />
               </Node>
             </Node>

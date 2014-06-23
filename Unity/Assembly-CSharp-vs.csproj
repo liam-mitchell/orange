@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Characters\CharacterAttack.cs" />
      <Compile Include="Assets\Scripts\Characters\CharacterControl.cs" />
+     <Compile Include="Assets\Scripts\Characters\Rogue\RogueShank.cs" />
      <Compile Include="Assets\Scripts\Characters\Rogue\RogueTumble.cs" />
      <Compile Include="Assets\Scripts\IAbility.cs" />
      <Compile Include="Assets\Scripts\IControl.cs" />
@@ -54,8 +55,11 @@
      <Compile Include="Assets\Scripts\Players\UserInterface.cs" />
      <Compile Include="Assets\Scripts\Units\UnitMovement.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStats.cs" />
+     <Compile Include="Assets\Scripts\Utilities\Assert.cs" />
+     <Compile Include="Assets\Scripts\Utilities\Attributes.cs" />
      <Compile Include="Assets\Scripts\Utilities\Layers.cs" />
      <Compile Include="Assets\Scripts\Utilities\Selectable.cs" />
+     <Compile Include="Assets\Scripts\Utilities\StatsBar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

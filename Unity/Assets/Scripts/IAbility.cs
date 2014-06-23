@@ -3,8 +3,11 @@ using System.Collections;
 
 public class IAbility : MonoBehaviour {
 	public IControl control;
+	public float cooldown;
+	
 	protected bool active_;
 	protected int priority_;
+	protected float current_cooldown_;
 	
 	// Use this for initialization
 	void Start () {
@@ -18,7 +21,8 @@ public class IAbility : MonoBehaviour {
 	
 	public virtual void on_rmouse() { /* empty */ }
 	public virtual void on_lmouse() { /* empty */ }
-	public virtual void on_space() { /*empty */ }
+	public virtual void on_space() { /* empty */ }
+	public virtual void on_qkey() { /* empty */ }
 	
 	/**
 	 * interrupt

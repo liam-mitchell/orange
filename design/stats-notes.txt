@@ -1,0 +1,31 @@
+Three core stats:
+	- Strength
+	  - HP - 10 points of HP per point of strength
+	  - HP regen - 1 point / second / 10 points of strength
+	- Agility
+	  - Attack speed - 1 point of attack speed per point of agility
+	  - Armor - 1 point of armor per 5 agility
+	    - Would this be more sensible as 1 / 1 and percentage reduction?... like attack speed
+	- Intelligence
+	  - Mana - 10 points of mana per point of intelligence
+	  - Mana regen - 1 point / second / 10 points of intelligence
+
+Attack stats:
+	- Attack damage
+	  - From primary attribute - 1 point / point of attribute
+	  - Base damage
+	  - Attack damage should probably average out to about 10 - 12 damage per attack for players
+	  - Enemy attack damage should be around 5 - 6 probably?
+	  - How much healing is there going to be?
+	- Armor
+	  - Damage reduction - damage * (10 / (10 + armor)) = final damage
+	- Attack speed
+	  - Percent increase - base attack time * (100 / 100 + attack speed) = attack time
+
+HP and mana:
+	- HP - 10 pts of HP / pt of strength = probably 200 hp on average?...
+	  - This seems low... maybe 20? but maybe not
+	  - HP regen - rate above may be too quick
+	- Mana - similar amounts of mana?
+	  - This might need more balancing... but it will work for now
+	  - Same problem as HP for regen
