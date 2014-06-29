@@ -1,7 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class IControl : MonoBehaviour {
+/************************************************
+ * IControl - interface for controlling an actor*
+ * via abilities and interrupts					*
+ * 												*
+ * Closely related to the IAbilty interface -	*
+ * refer to that as well for a full description.*
+ * 												*
+ * Provides only the interrupt_all() function,	*
+ * as well as maintaining a list of abilities,	*
+ * which allows overriding controls to update	*
+ * them as they see fit.						*
+ ************************************************/
+
+public abstract class IControl : MonoBehaviour {
 	public List<IAbility> abilities;
 
 	// Use this for initialization

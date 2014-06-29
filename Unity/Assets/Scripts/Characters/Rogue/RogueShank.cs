@@ -14,14 +14,25 @@ public class RogueShank : IAbility {
 	
 	private float shank_time_;
 	
+	/**
+	 * on_qkey() - overrides IAbility::on_qkey()
+	 * called when q is pressed on the keyboard
+	 * see IAbility::on_qkey() for details
+	 */
 	public override void on_qkey()
 	{
 		target();
-		userInterface.block_next_selection();
+		Debug.Log ("qkey pressed");
 	}
 	
+	/**
+	 * on_lmouse() - overrides IAbility::on_lmouse()
+	 * called when the left mouse button is clicked
+	 * see IAbility::on_lmouse() for details
+	 */
 	public override void on_lmouse()
 	{
+		Debug.Log ("lmouse clicked in shank");
 		if (targeting_)
 		{
 			target_ = userInterface.mouseover_object();	
@@ -29,6 +40,35 @@ public class RogueShank : IAbility {
 		}
 	}
 	
+	/**
+	 * on_interrupt() - overrides IAbility's on_interrupt() to properly
+	 * shut down this ability if interruptible
+	 * see IAbility::on_interrupt() for details
+	 */
+	public override bool on_interrupt(int priority, IAbility source)
+	{
+		if (source == this || !active_) return true;
+		if (priority >= priority_) {
+			active_ = false;
+			shanking_ = false;
+			targeting_ = false;
+			shank_time_ = 0;
+			target_ = null;
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * shank() - called when in range of a target to begin the
+	 * shank ability
+	 * 
+	 * pre: can_shank()
+	 * 
+	 * attempts to interrupt all other abilities as per
+	 * IAbility spec
+	 */
 	private void shank()
 	{
 		if (!control.interrupt_all(priority_, this)) return;
@@ -39,9 +79,15 @@ public class RogueShank : IAbility {
 		current_cooldown_ = cooldown;
 	}
 	
+	/**
+	 * called every frame in update()
+	 * updates cooldown, and updates the shank by sending damage
+	 * message if we're appropriately far into the shank
+	 * as well as stopping the shank if we're done
+	 */
 	private void update_shank()
 	{
-		current_cooldown_ -= Time.deltaTime;
+		if (current_cooldown_ >= 0) current_cooldown_ -= Time.deltaTime;
 		
 		if (!shanking_) return;
 		
@@ -49,14 +95,30 @@ public class RogueShank : IAbility {
 		
 		if (shank_time_ >= duration) {
 			target_.SendMessage ("on_attack_damage", damage);
+			shanking_ = false;
 		}
 	}
 	
+	/**
+	 * target() - acquires a target through the UI
+	 * requires targeting_ to be reset in the UI when we're
+	 * finished stealing the left mouse
+	 */
 	private void target()
 	{
 		targeting_ = true;
+		userInterface.targeting = true;
+		Debug.Log ("targeting from shank");
 	}
 	
+	/**
+	 * can_shank() - can we shank()?
+	 * we must have:
+	 *  a target
+	 *  no cooldown
+	 *  be in range
+	 *  be behind target
+	 */
 	private bool can_shank()
 	{
 		if (target_ == null) return false;
@@ -70,6 +132,9 @@ public class RogueShank : IAbility {
 		return true;
 	}
 	
+	/**
+	 * update_animator() - for any ability that requires animation
+	 */
 	private void update_animator()
 	{
 		animator_.SetBool("shanking", shanking_);
@@ -86,6 +151,7 @@ public class RogueShank : IAbility {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		update_shank ();
+		update_animator ();
 	}
 }

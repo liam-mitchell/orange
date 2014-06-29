@@ -10,7 +10,8 @@ public class Player : MonoBehaviour {
 
 	private void update_input()
 	{
-		if (Input.GetMouseButtonDown(0)) {
+		if (Input.GetMouseButtonDown(0)
+			&& !userInterface.targeting) {
 			selected = userInterface.select_object();
 		}
 	}

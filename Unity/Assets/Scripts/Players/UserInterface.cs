@@ -2,8 +2,10 @@
 using System.Collections;
 
 public class UserInterface : MonoBehaviour {
+	[HideInInspector] public bool targeting;
+	
 	private GameObject selected;
-	private bool blocking_;
+	
 	// Use this for initialization
 	void Start () {
 		selected = GameObject.FindGameObjectWithTag("Player");
@@ -11,11 +13,6 @@ public class UserInterface : MonoBehaviour {
 	
 	void OnGUI () {
 		GUI.Label(new Rect(10, 10, 100, 20), selected.name);
-	}
-	
-	public void block_next_selection()
-	{
-		blocking_ = true;
 	}
 	
 	/**
@@ -28,7 +25,6 @@ public class UserInterface : MonoBehaviour {
 	 */
 	public GameObject select_object()
 	{
-		if (blocking_) return selected;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		if (Physics.Raycast (ray, 
