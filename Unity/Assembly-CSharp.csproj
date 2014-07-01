@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Utilities\Attributes.cs" />
      <Compile Include="Assets\Scripts\Utilities\Layers.cs" />
      <Compile Include="Assets\Scripts\Utilities\Selectable.cs" />
+     <Compile Include="Assets\Scripts\Utilities\ServerManager.cs" />
      <Compile Include="Assets\Scripts\Utilities\StatsBar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

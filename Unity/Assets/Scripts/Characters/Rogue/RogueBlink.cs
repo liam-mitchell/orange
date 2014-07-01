@@ -43,6 +43,7 @@ public class RogueBlink : IAbility {
 			shanking_ = false;
 			blink_time_ = 0;
 			shank_time_ = 0;
+			if (targeting_) done_targeting();
 			return true;
 		}
 		return false;
@@ -57,6 +58,7 @@ public class RogueBlink : IAbility {
 	{
 		blinking_ = true;
 		blink_time_ = 0;
+		current_cooldown_ = cooldown;
 	}
 	
 	private void update_blink()
@@ -137,6 +139,7 @@ public class RogueBlink : IAbility {
 		update_turn();
 		update_blink();
 		update_shank();
+		update_cooldown();
 		update_animator();
 	}
 }

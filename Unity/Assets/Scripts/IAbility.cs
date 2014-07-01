@@ -201,4 +201,9 @@ public abstract class IAbility : MonoBehaviour {
 	 * in child classes
 	 */
 	protected virtual void done_turn() { /* empty */ }
+	
+	protected virtual void update_cooldown()
+	{
+		if (current_cooldown_ >= 0) current_cooldown_ -= Time.deltaTime;
+	}
 }
