@@ -4,12 +4,9 @@ using System.Collections;
 public class RogueShank : IAbility {
 	public float damage;
 	public float duration;
-	public UserInterface userInterface;
 	
-	private GameObject target_;
 	private Animator animator_;
 	
-	private bool targeting_;
 	private bool shanking_;
 	
 	private float shank_time_;
@@ -22,7 +19,6 @@ public class RogueShank : IAbility {
 	public override void on_qkey()
 	{
 		target();
-		Debug.Log ("qkey pressed");
 	}
 	
 	/**
@@ -32,16 +28,16 @@ public class RogueShank : IAbility {
 	 */
 	public override void on_lmouse()
 	{
-		Debug.Log ("lmouse clicked in shank");
 		if (targeting_)
 		{
 			target_ = userInterface.mouseover_object();	
-			if (can_shank ()) shank ();
+			if (can_shank ()) turn (target_.transform.position);
+			done_targeting();
 		}
 	}
 	
 	/**
-	 * on_interrupt() - overrides IAbility's on_interrupt() to properly
+	 * on_interrupt() - overrides IAbility::on_interrupt() to properly
 	 * shut down this ability if interruptible
 	 * see IAbility::on_interrupt() for details
 	 */
@@ -58,6 +54,11 @@ public class RogueShank : IAbility {
 		}
 		
 		return false;
+	}
+	
+	protected override void done_turn()
+	{
+		shank();
 	}
 	
 	/**
@@ -100,18 +101,6 @@ public class RogueShank : IAbility {
 	}
 	
 	/**
-	 * target() - acquires a target through the UI
-	 * requires targeting_ to be reset in the UI when we're
-	 * finished stealing the left mouse
-	 */
-	private void target()
-	{
-		targeting_ = true;
-		userInterface.targeting = true;
-		Debug.Log ("targeting from shank");
-	}
-	
-	/**
 	 * can_shank() - can we shank()?
 	 * we must have:
 	 *  a target
@@ -151,6 +140,7 @@ public class RogueShank : IAbility {
 	
 	// Update is called once per frame
 	void Update () {
+		update_turn ();
 		update_shank ();
 		update_animator ();
 	}

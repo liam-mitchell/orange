@@ -5,7 +5,7 @@ using System.Collections.Generic;
  * IControl - interface for controlling an actor*
  * via abilities and interrupts					*
  * 												*
- * Closely related to the IAbilty interface -	*
+ * Closely related to the IAbility interface -	*
  * refer to that as well for a full description.*
  * 												*
  * Provides only the interrupt_all() function,	*

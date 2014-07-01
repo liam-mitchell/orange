@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Characters\CharacterAttack.cs" />
      <Compile Include="Assets\Scripts\Characters\CharacterControl.cs" />
+     <Compile Include="Assets\Scripts\Characters\Rogue\RogueBlink.cs" />
      <Compile Include="Assets\Scripts\Characters\Rogue\RogueShank.cs" />
      <Compile Include="Assets\Scripts\Characters\Rogue\RogueTumble.cs" />
      <Compile Include="Assets\Scripts\IAbility.cs" />

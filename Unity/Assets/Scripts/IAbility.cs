@@ -48,19 +48,50 @@ using System.Collections;
  * to acquire a reference to the animator in Start()*
  * and then simply update it with the relevant bool	*
  * in Update().										*
- ****************************************************/
+ *													*
+ * ***												*
+ * target()	/ done_targeting()						*
+ * ***												*
+ * 													*
+ * Helper functions for acquiring a target via the	*
+ * user interface (blocking it from selecting on	*
+ * the next left mouse click).						*
+ *													*
+ * ***												*
+ * turn(Vector3 target) / update_turn()				*
+ *													*
+ * Helper functions for abilities which require		*
+ * facing the target. turn() will initiate a turn to*
+ * face target, while update_turn() will be called	*
+ * every frame. On completion, update_turn() will	*
+ * send a 'done_turn()' message, to be accepted in	*
+ * the ability which is initiating the turn.		*
+ ****************************************************/ 
 
 
 public abstract class IAbility : MonoBehaviour {
 	// reference to the control so we can interrupt
 	// other abilities via interrupt_all()
 	public IControl control;
+	public UserInterface userInterface;	
+	public UnitStats stats;
 	
 	// cooldown of this ability
 	public float cooldown;
 	
 	// are we active?
 	protected bool active_;
+	
+	// for abilities requiring a target phase
+	protected bool targeting_;
+	protected GameObject target_;
+	
+	// for abilities that require facing the target
+	protected float turn_duration_;
+	protected float turn_time_;
+	protected Quaternion turn_start_;
+	protected Quaternion turn_target_;
+	protected bool turning_;
 	
 	// priority to interrupt other abilities with
 	// if we're interrupted by lower priority than
@@ -82,10 +113,11 @@ public abstract class IAbility : MonoBehaviour {
 	 * we provide a default BUT this means you have to
 	 * remember to override them when you implement IAbility!
 	 */
-	public virtual void on_rmouse() { /* empty */ }
+	public virtual void on_rmouse() { done_targeting(); } // by default, cancel targeting on rmouse TODO: this might be better as on_interrupt()?
 	public virtual void on_lmouse() { /* empty */ }
 	public virtual void on_space() { /* empty */ }
 	public virtual void on_qkey() { /* empty */ }
+	public virtual void on_wkey() { /* empty */ }
 	
 	/**
 	 * on_interrupt() - interrupt this ability with the given priority
@@ -106,4 +138,67 @@ public abstract class IAbility : MonoBehaviour {
 		}
 		else return false;
 	}
+
+	/**
+	 * target() - acquires a target through the UI
+	 * requires done_targeting() to be called when we're
+	 * finished stealing the left mouse
+	 */
+	protected virtual void target()
+	{
+		userInterface.targeting = true;
+		targeting_ = true;
+	}
+	
+	protected virtual void done_targeting()
+	{
+		userInterface.targeting = false;
+		targeting_ = false;
+	}
+	
+	/**
+	 * turn() - initiates a turning motion to face towards
+	 * target.
+	 * 
+	 * REQUIRES: 
+	 *  -that update_turn() be called once per frame
+	 *     by the ability that initiated the turn
+	 *  -that the ability that initiated the turn
+	 * 	   implement the done_turn() function, to be called
+	 *     when update_turn() finds we're done
+	 */
+	protected virtual void turn(Vector3 target)
+	{
+		Vector3 direction = target - transform.position;
+		direction.y = 0;
+		turn_start_ = transform.rotation;
+		turn_target_ = Quaternion.LookRotation(direction);
+		turn_duration_ = Quaternion.Angle(turn_start_, turn_target_)
+										/ stats.turnspeed;
+		turn_time_ = 0;
+		turning_ = true;
+	}
+	
+	/**
+	 * update_turn() - updates turning motion in progress
+	 * 
+	 * call every frame in any ability that requires
+	 * facing a target
+	 */
+	protected virtual void update_turn()
+	{
+		if (!turning_) return;
+		transform.rotation = Quaternion.Slerp(turn_start_, turn_target_, turn_time_ / turn_duration_);
+		turn_time_ += Time.deltaTime;
+		if (turn_time_ > turn_duration_) {
+			turning_ = false;
+			done_turn ();
+		}
+	}
+	
+	/**
+	 * done_turn() - empty implementation to be overriden
+	 * in child classes
+	 */
+	protected virtual void done_turn() { /* empty */ }
 }

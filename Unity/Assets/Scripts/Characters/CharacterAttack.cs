@@ -10,14 +10,10 @@ public class CharacterAttack : IAbility {
 	 * where t = final attack time
 	 * 		 b = base attack time
 	 * 		 s = attack speed
-	 */
-	public UserInterface userInterface; // to allow selecting of targets with the UI's functions
-	public UnitStats stats;
-	
+	 */	
 	private float attack_duration_;
 	private float attack_time_;
 	
-	private GameObject target_;
 	private bool attacking_;
 	private bool hit_this_attack_;
 	
@@ -65,6 +61,10 @@ public class CharacterAttack : IAbility {
 		hit_this_attack_ = false;
 	}
 	
+	protected override void done_turn()
+	{
+		attack ();
+	}	
 	/**
 	 * update_attack() - called every frame
 	 * if we're attacking, updates the time and
@@ -115,14 +115,14 @@ public class CharacterAttack : IAbility {
 	
 	// Update is called once per frame
 	void Update () {
-		if (active_ && !attacking_) {
-			if (in_range()
-				&& control.interrupt_all(priority_, this))
-			{
-				attack();
-			}
+		if (active_ 
+			&& !attacking_
+			&& !turning_
+			&& in_range ()) {
+				turn (target_.transform.position);
 		}
 		
+		update_turn ();
 		update_attack();			
 		update_animator();
 	}

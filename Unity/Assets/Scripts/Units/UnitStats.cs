@@ -12,6 +12,9 @@ public class UnitStats : MonoBehaviour {
 	public int baseMana;
 	public float baseAttackTime;
 	
+	public float movespeed;
+	public float turnspeed;
+	
 	public string primaryAttribute;
 	
 	private Attributes primary_attribute_;
