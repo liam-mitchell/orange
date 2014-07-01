@@ -10,26 +10,30 @@ public class CharacterAttack : IAbility {
 	 * where t = final attack time
 	 * 		 b = base attack time
 	 * 		 s = attack speed
-	 */
-	public UserInterface userInterface; // to allow selecting of targets with the UI's functions
-	public UnitStats stats;
-	
+	 */	
 	private float attack_duration_;
 	private float attack_time_;
 	
-	private GameObject target_;
 	private bool attacking_;
 	private bool hit_this_attack_;
 	
 	private Animator animator_;
 	
+	/**
+	 * on_rmouse() - called when right mouse is clicked
+	 * overrides IAbility::on_rmouse() - see for details
+	 */
 	public override void on_rmouse()
 	{
 		target_ = userInterface.mouseover_object();
-		Debug.Log (target_);
 		active_ = true;
 	}
 	
+	/**
+	 * on_interrupt() - called when someone tries to
+	 * interrupt us
+	 * overrides IAbility::on_interrupt() - see for details
+	 */
 	public override bool on_interrupt(int priority, IAbility source)
 	{
 		if (source == this || !active_) return true;
@@ -45,6 +49,10 @@ public class CharacterAttack : IAbility {
 		return false;
 	}
 	
+	/**
+	 * attack() - begins attack
+	 * pre: in_range()
+	 */
 	private void attack()
 	{
 		attack_duration_ = stats.baseAttackTime * 100 / (100 + stats.agility);
@@ -53,6 +61,16 @@ public class CharacterAttack : IAbility {
 		hit_this_attack_ = false;
 	}
 	
+	protected override void done_turn()
+	{
+		attack ();
+	}	
+	/**
+	 * update_attack() - called every frame
+	 * if we're attacking, updates the time and
+	 * does damage if we're past the point of
+	 * no return
+	 */
 	private void update_attack()
 	{
 		if (!attacking_) return;
@@ -70,6 +88,9 @@ public class CharacterAttack : IAbility {
 		}
 	}
 	
+	/**
+	 * in_range() - are we in range to hit the target?
+	 */
 	private bool in_range()
 	{
 		if (target_ == null) return false;
@@ -80,7 +101,6 @@ public class CharacterAttack : IAbility {
 	private void update_animator()
 	{
 		animator_.SetBool("attacking", attacking_);
-		Debug.Log (animator_.GetBool ("attacking"));
 	}
 	
 	// Use this for initialization
@@ -95,14 +115,14 @@ public class CharacterAttack : IAbility {
 	
 	// Update is called once per frame
 	void Update () {
-		if (active_ && !attacking_) {
-			if (in_range()
-				&& control.interrupt_all(priority_, this))
-			{
-				attack();
-			}
+		if (active_ 
+			&& !attacking_
+			&& !turning_
+			&& in_range ()) {
+				turn (target_.transform.position);
 		}
 		
+		update_turn ();
 		update_attack();			
 		update_animator();
 	}
