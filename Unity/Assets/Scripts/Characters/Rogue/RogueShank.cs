@@ -31,7 +31,9 @@ public class RogueShank : IAbility {
 		if (targeting_)
 		{
 			target_ = userInterface.mouseover_object();	
-			if (can_shank ()) turn (target_.transform.position);
+			if (can_shank () && control.interrupt_all(priority_, this)) {
+				turn (target_.transform.position);
+			}
 			done_targeting();
 		}
 	}
@@ -71,13 +73,12 @@ public class RogueShank : IAbility {
 	 * IAbility spec
 	 */
 	private void shank()
-	{
-		if (!control.interrupt_all(priority_, this)) return;
-		
+	{		
 		shanking_ = true;
 		targeting_ = false;
 		shank_time_ = 0;
 		current_cooldown_ = cooldown;
+		update_animator();
 	}
 	
 	/**
@@ -88,8 +89,6 @@ public class RogueShank : IAbility {
 	 */
 	private void update_shank()
 	{
-		if (current_cooldown_ >= 0) current_cooldown_ -= Time.deltaTime;
-		
 		if (!shanking_) return;
 		
 		shank_time_ += Time.deltaTime;
@@ -97,6 +96,7 @@ public class RogueShank : IAbility {
 		if (shank_time_ >= duration) {
 			target_.SendMessage ("on_attack_damage", damage);
 			shanking_ = false;
+			update_animator();
 		}
 	}
 	
@@ -142,6 +142,6 @@ public class RogueShank : IAbility {
 	void Update () {
 		update_turn ();
 		update_shank ();
-		update_animator ();
+		update_cooldown ();
 	}
 }

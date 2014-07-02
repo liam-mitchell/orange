@@ -87,7 +87,7 @@ public class UnitStats : MonoBehaviour {
 	void Update() 
 	{
 		if (current_hp < 0) {
-			SendMessage("on_no_hitpoints");
+//			SendMessage("on_no_hitpoints"); // TODO: uncomment this when we actually have this function
 		}
 		
 		recalc_max_hp_mana();

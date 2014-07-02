@@ -188,6 +188,13 @@ public abstract class IAbility : MonoBehaviour {
 	protected virtual void update_turn()
 	{
 		if (!turning_) return;
+		
+		if (turn_time_ <= 0.0f) {
+			turning_ = false;
+			done_turn();
+			return;
+		}
+		
 		transform.rotation = Quaternion.Slerp(turn_start_, turn_target_, turn_time_ / turn_duration_);
 		turn_time_ += Time.deltaTime;
 		if (turn_time_ > turn_duration_) {
