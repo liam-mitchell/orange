@@ -36,6 +36,11 @@ public class ServerManager : MonoBehaviour {
 		Debug.Log("Initialized game server");
 	}
 	
+	void OnConnectedToServer()
+	{
+		
+	}
+	
 	private void refresh_hosts()
 	{
 		MasterServer.RequestHostList(game_type_);

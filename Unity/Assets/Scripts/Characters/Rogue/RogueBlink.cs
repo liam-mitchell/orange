@@ -28,8 +28,11 @@ public class RogueBlink : IAbility {
 		{
 			target_ = userInterface.mouseover_object ();
 			done_targeting ();
-			if (in_range()) turn (target_.transform.position
-							      - target_.transform.forward); 
+			if (in_range()) {
+				turn (target_.transform.position
+					  - target_.transform.forward);
+				active_ = true;
+			}
 		}
 	}
 	
@@ -59,6 +62,7 @@ public class RogueBlink : IAbility {
 		blinking_ = true;
 		blink_time_ = 0;
 		current_cooldown_ = cooldown;
+		update_animator();
 	}
 	
 	private void update_blink()
@@ -81,6 +85,7 @@ public class RogueBlink : IAbility {
 	{
 		shanking_ = true;
 		shank_time_ = 0;
+		update_animator();
 		
 		transform.position = target_.transform.position
 							 - target_.transform.forward * 0.5f;
@@ -100,6 +105,7 @@ public class RogueBlink : IAbility {
 		if (shank_time_ >= shankDuration) {
 			shanking_ = false;
 			active_ = false;
+			update_animator();
 		}
 	}
 	
@@ -124,7 +130,7 @@ public class RogueBlink : IAbility {
 
 	// Use this for initialization
 	void Start () {
-		priority_ = 2;
+		priority_ = 3;
 		active_ = false;
 		blinking_ = false;
 		shanking_ = false;
@@ -140,6 +146,5 @@ public class RogueBlink : IAbility {
 		update_blink();
 		update_shank();
 		update_cooldown();
-		update_animator();
 	}
 }

@@ -44,6 +44,7 @@ public class CharacterAttack : IAbility {
 			attack_duration_ = 0;
 			target_ = null;
 			hit_this_attack_ = false;
+			update_animator();
 			return true;
 		}
 		return false;
@@ -59,6 +60,7 @@ public class CharacterAttack : IAbility {
 		attack_time_ = 0;
 		attacking_ = true;
 		hit_this_attack_ = false;
+		update_animator();
 	}
 	
 	protected override void done_turn()
@@ -118,12 +120,12 @@ public class CharacterAttack : IAbility {
 		if (active_ 
 			&& !attacking_
 			&& !turning_
-			&& in_range ()) {
+			&& in_range ()
+			&& control.interrupt_all(priority_, this)) {
 				turn (target_.transform.position);
 		}
 		
 		update_turn ();
-		update_attack();			
-		update_animator();
+		update_attack();
 	}
 }
