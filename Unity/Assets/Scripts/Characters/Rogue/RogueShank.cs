@@ -129,7 +129,8 @@ public class RogueShank : IAbility {
 		animator_.SetBool("shanking", shanking_);
 	}
 	// Use this for initialization
-	void Start () {
+	new void Start () {
+		base.Start();
 		priority_ = 2;
 		targeting_ = false;
 		shanking_ = false;

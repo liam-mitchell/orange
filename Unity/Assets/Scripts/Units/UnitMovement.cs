@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UnitMovement : IAbility {
-	public float moveSpeed;
-	public float turnSpeed;
-	
+public class UnitMovement : IAbility {	
 	private Vector3 move_target_;
 	private bool moving_;
 	
@@ -69,12 +66,13 @@ public class UnitMovement : IAbility {
 			active_ = false;
 		}
 		else {
-			transform.position += direction.normalized * moveSpeed * Time.deltaTime;
+			transform.position += direction.normalized * stats.movespeed * Time.deltaTime;
 		}
 	}
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
+		base.Start();
 		animator_ = GetComponent<Animator>();
 		control = GetComponent<CharacterControl>();
 	}

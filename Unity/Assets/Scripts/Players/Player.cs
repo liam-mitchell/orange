@@ -2,11 +2,14 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	public GameObject character;
+	public GameObject characterPrefab;
+	public Vector3 startingPosition;
 	public UserInterface userInterface;
 	
+	private GameObject character;
 	private GameObject selected;
 	private CharacterControl character_control_;
+	private NetworkView network_view_;
 
 	private void update_input()
 	{
@@ -18,14 +21,23 @@ public class Player : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		selected = character;
-		character_control_ = character.GetComponent<CharacterControl>();
+		Debug.Log ("rogue player instantiated!");
+		Debug.Log (System.Environment.StackTrace);
+		network_view_ = GetComponent<NetworkView>();
+		if (network_view_.isMine && character == null) {
+			character = (GameObject)Network.Instantiate (characterPrefab, startingPosition, Quaternion.identity, 0);
+			character.transform.parent = transform;
+			selected = character;
+			character_control_ = selected.GetComponent<CharacterControl>();
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		update_input();
-		if (selected == character) character_control_.selected = true;
-		else character_control_.selected = false;
+		if (network_view_.isMine) {
+			update_input();
+			if (selected == character) character_control_.selected = true;
+			else character_control_.selected = false;
+		}
 	}
 }

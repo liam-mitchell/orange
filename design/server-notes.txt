@@ -1,0 +1,20 @@
+Server
+	- What needs to be synchronized?
+	- What RPCs do we need?
+	- How much work will the server do? (lots)
+	- How and when will we synchronize?
+
+What needs to be synchronized?
+	- Position
+	- Animator state
+	- HP / Mana	
+
+What RPCs do we need?
+	- Input calls should be RPC
+
+What will the server do?
+	- Respond to all input appropriately
+		- Player sends input call to server, also updates locally
+		- Server responds to input call, updates position, etc...
+	- Server syncs with players as often as it can
+	

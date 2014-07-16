@@ -59,7 +59,7 @@ public class RogueTumble : IAbility {
 	}
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
 		animator_ = GetComponent<Animator>();
 		priority_ = 2;
 		active_ = false;

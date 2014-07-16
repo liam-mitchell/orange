@@ -1,0 +1,66 @@
+############
+# CONTROLS #
+############
+
+IControl
+------
+void interrupt_all() // interrupt list of abilities
+void on_<button>() {}// override only necessary buttons in children
+***
+List<IAbility> // list of all usable abilities
+------
+
+CharacterControl : IControl
+------
+void on_rmouse() // move / attack
+
+void on_keyspace() // abilities
+void on_keyq()
+void on_keyw()
+void on_keye()
+void on_keyr()
+***
+public List<IAbility> (PlayerMovement, PlayerAttack, 5 abilities)
+bool selected
+------
+
+#############
+# ABILITIES #
+#############
+
+IAbility
+------
+void on_interrupt(int priority)
+void Update() = 0
+void on_<button>() {} // again override only necessary buttons in children
+***
+IControl // control to interrupt other abilities with
+Animator // each ability can control its own animations - and is responsible for stopping them when interrupted
+bool // active
+int // priority - if interrupted with < this, don't stop
+------
+
+CharacterMovement : IAbility
+------
+void on_interrupt(int priority) // stop all state variables
+void on_rmouse() // interrupt_all(priority 0)
+void Update() // update if active
+***
+PlayerControl
+Animator
+bool active
+// other state variables
+priority 0
+
+CharacterAttack: IAbility
+------
+void on_interrupt(int priority) // stop
+void on_rmouse() // interrupt_all(priority 1) if we can hit
+void Update() // if active
+***
+PlayerControl
+Animator
+bool active
+// other state
+priority 1
+GameObject target

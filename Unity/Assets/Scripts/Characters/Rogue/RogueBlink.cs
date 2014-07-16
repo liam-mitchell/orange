@@ -18,14 +18,17 @@ public class RogueBlink : IAbility {
 	
 	public override void on_wkey()
 	{
+		Debug.Log ("wkey pressed!");
 		if (current_cooldown_ <= 0) target();
 	}
 	
 	public override void on_lmouse()
 	{
+		Debug.Log ("attempting interrupt from blink...");
 		if (targeting_
 			&& control.interrupt_all(priority_, this))
 		{
+			Debug.Log ("lmouse clicked!");
 			target_ = userInterface.mouseover_object ();
 			done_targeting ();
 			if (in_range()) {
@@ -129,7 +132,8 @@ public class RogueBlink : IAbility {
 	}
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
+		base.Start();
 		priority_ = 3;
 		active_ = false;
 		blinking_ = false;

@@ -56,6 +56,7 @@ public class CharacterAttack : IAbility {
 	 */
 	private void attack()
 	{
+		Debug.Log ("attacking!");
 		attack_duration_ = stats.baseAttackTime * 100 / (100 + stats.agility);
 		attack_time_ = 0;
 		attacking_ = true;
@@ -106,7 +107,8 @@ public class CharacterAttack : IAbility {
 	}
 	
 	// Use this for initialization
-	void Start () {
+	new void Start () {
+		base.Start();
 		animator_ = GetComponent<Animator>();
 		attack_time_ = 0;
 		attack_duration_ = 0;

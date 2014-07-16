@@ -72,9 +72,10 @@ using System.Collections;
 public abstract class IAbility : MonoBehaviour {
 	// reference to the control so we can interrupt
 	// other abilities via interrupt_all()
-	public IControl control;
-	public UserInterface userInterface;	
-	public UnitStats stats;
+	protected IControl control;
+	protected UnitStats stats;
+
+	protected UserInterface userInterface;
 	
 	// cooldown of this ability
 	public float cooldown;
@@ -146,6 +147,8 @@ public abstract class IAbility : MonoBehaviour {
 	 */
 	protected virtual void target()
 	{
+		if (userInterface == null) userInterface = GetComponentInParent<UserInterface>();
+		Debug.Log (userInterface);
 		userInterface.targeting = true;
 		targeting_ = true;
 	}
@@ -169,6 +172,7 @@ public abstract class IAbility : MonoBehaviour {
 	 */
 	protected virtual void turn(Vector3 target)
 	{
+		Debug.Log ("turning...");
 		Vector3 direction = target - transform.position;
 		direction.y = 0;
 		turn_start_ = transform.rotation;
@@ -189,7 +193,7 @@ public abstract class IAbility : MonoBehaviour {
 	{
 		if (!turning_) return;
 		
-		if (turn_time_ <= 0.0f) {
+		if (turn_duration_ <= 0.0f) {
 			turning_ = false;
 			done_turn();
 			return;
@@ -212,5 +216,13 @@ public abstract class IAbility : MonoBehaviour {
 	protected virtual void update_cooldown()
 	{
 		if (current_cooldown_ >= 0) current_cooldown_ -= Time.deltaTime;
+	}
+	
+	protected void Start()
+	{
+		userInterface = GameObject.FindWithTag("Player").GetComponent<UserInterface>();
+		Debug.Log (userInterface);
+		control = GetComponent<CharacterControl>();
+		stats = GetComponent<UnitStats>();
 	}
 }
