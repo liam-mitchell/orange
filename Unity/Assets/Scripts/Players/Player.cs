@@ -21,13 +21,12 @@ public class Player : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("rogue player instantiated!");
-		Debug.Log (System.Environment.StackTrace);
 		network_view_ = GetComponent<NetworkView>();
 		if (network_view_.isMine && character == null) {
 			character = (GameObject)Network.Instantiate (characterPrefab, startingPosition, Quaternion.identity, 0);
 			character.transform.parent = transform;
 			selected = character;
+			userInterface.selected = selected;
 			character_control_ = selected.GetComponent<CharacterControl>();
 		}
 	}

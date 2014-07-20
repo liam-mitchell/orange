@@ -148,13 +148,13 @@ public abstract class IAbility : MonoBehaviour {
 	protected virtual void target()
 	{
 		if (userInterface == null) userInterface = GetComponentInParent<UserInterface>();
-		Debug.Log (userInterface);
 		userInterface.targeting = true;
 		targeting_ = true;
 	}
 	
 	protected virtual void done_targeting()
 	{
+		if (userInterface == null) userInterface = GetComponentInParent<UserInterface>();
 		userInterface.targeting = false;
 		targeting_ = false;
 	}
@@ -172,7 +172,6 @@ public abstract class IAbility : MonoBehaviour {
 	 */
 	protected virtual void turn(Vector3 target)
 	{
-		Debug.Log ("turning...");
 		Vector3 direction = target - transform.position;
 		direction.y = 0;
 		turn_start_ = transform.rotation;
@@ -220,9 +219,8 @@ public abstract class IAbility : MonoBehaviour {
 	
 	protected void Start()
 	{
-		userInterface = GameObject.FindWithTag("Player").GetComponent<UserInterface>();
-		Debug.Log (userInterface);
 		control = GetComponent<CharacterControl>();
+		userInterface = GetComponentInParent<UserInterface>();
 		stats = GetComponent<UnitStats>();
 	}
 }

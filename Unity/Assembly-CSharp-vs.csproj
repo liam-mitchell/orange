@@ -46,23 +46,25 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Characters\CharacterAttack.cs" />
-     <Compile Include="Assets\Scripts\Characters\CharacterControl.cs" />
-     <Compile Include="Assets\Scripts\Characters\Rogue\RogueBlink.cs" />
-     <Compile Include="Assets\Scripts\Characters\Rogue\RogueShank.cs" />
-     <Compile Include="Assets\Scripts\Characters\Rogue\RogueTumble.cs" />
-     <Compile Include="Assets\Scripts\GameInitialization.cs" />
      <Compile Include="Assets\Scripts\IAbility.cs" />
      <Compile Include="Assets\Scripts\IControl.cs" />
      <Compile Include="Assets\Scripts\Players\CameraController.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
      <Compile Include="Assets\Scripts\Players\UserInterface.cs" />
+     <Compile Include="Assets\Scripts\Units\Characters\CharacterAttack.cs" />
+     <Compile Include="Assets\Scripts\Units\Characters\CharacterControl.cs" />
+     <Compile Include="Assets\Scripts\Units\Characters\Fighter\FighterCharge.cs" />
+     <Compile Include="Assets\Scripts\Units\Characters\Rogue\RogueBlink.cs" />
+     <Compile Include="Assets\Scripts\Units\Characters\Rogue\RogueShank.cs" />
+     <Compile Include="Assets\Scripts\Units\Characters\Rogue\RogueTumble.cs" />
+     <Compile Include="Assets\Scripts\Units\Enemies\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\Units\UnitMovement.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStats.cs" />
      <Compile Include="Assets\Scripts\Utilities\Assert.cs" />
      <Compile Include="Assets\Scripts\Utilities\Enums\Attributes.cs" />
      <Compile Include="Assets\Scripts\Utilities\Enums\Layers.cs" />
      <Compile Include="Assets\Scripts\Utilities\Enums\Players.cs" />
+     <Compile Include="Assets\Scripts\Utilities\GameInitialization.cs" />
      <Compile Include="Assets\Scripts\Utilities\Selectable.cs" />
      <Compile Include="Assets\Scripts\Utilities\StatsBar.cs" />
   </ItemGroup>

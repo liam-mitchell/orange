@@ -4,7 +4,7 @@ using System.Collections;
 public class UserInterface : MonoBehaviour {
 	[HideInInspector] public bool targeting;
 	
-	private GameObject selected;
+	[HideInInspector] public GameObject selected;
 	
 	// Use this for initialization
 	void Start () {
@@ -12,7 +12,7 @@ public class UserInterface : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		GUI.Label(new Rect(10, 10, 100, 20), selected.name);
+		if (selected != null) GUI.Label(new Rect(10, 10, 100, 20), selected.name);
 	}
 	
 	/**
