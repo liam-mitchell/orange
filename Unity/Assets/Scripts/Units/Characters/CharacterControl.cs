@@ -18,7 +18,6 @@ public class CharacterControl : IControl
 {
 	[HideInInspector] public bool selected;
 	
-	
 	/**
 	 * clamp_height() - maintains the player just above ground level
 	 * called every frame
@@ -34,11 +33,12 @@ public class CharacterControl : IControl
 			transform.position = hit.point + Vector3.up * .1f;
 		}
 	}
+
 	// Use this for initialization
 	void Start () {
-		
+		add_nav_mesh_agent ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		clamp_height ();
@@ -54,7 +54,5 @@ public class CharacterControl : IControl
 			if (Input.GetKeyDown (KeyCode.Q)) a.on_qkey ();
 			if (Input.GetKeyDown (KeyCode.W)) a.on_wkey ();
 		}
-
 	}
-
 }

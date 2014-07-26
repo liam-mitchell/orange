@@ -17,6 +17,9 @@ using System.Collections.Generic;
 public abstract class IControl : MonoBehaviour {
 	public List<IAbility> abilities;
 
+	protected List<IModifier> modifiers_;
+	protected List<IEffect> effects_;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -34,5 +37,42 @@ public abstract class IControl : MonoBehaviour {
 		}
 		
 		return true;
+	}
+
+	public void add_modifier(IModifier modifier)
+	{
+		modifiers_.Add (modifier);
+	}
+
+	public void remove_modifier(IModifier modifier)
+	{
+		modifiers_.RemoveAll (x => x == modifier);
+	}
+
+	public void add_effect(IEffect effect)
+	{
+		effects_.Add (effect);
+	}
+
+	public void remove_effect(IEffect effect)
+	{
+		effects_.RemoveAll (x => x == effect);
+	}
+
+	protected void add_nav_mesh_agent()
+	{
+		NavMeshHit hit;
+		if (NavMesh.SamplePosition(transform.position,
+		                           out hit,
+		                           500,
+		                           1))
+		{
+			transform.position = hit.position;
+			gameObject.AddComponent<NavMeshAgent>();
+		}
+		else {
+			Debug.Log ("Error adding nav mesh agent!");
+		}
+		
 	}
 }
