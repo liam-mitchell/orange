@@ -1,0 +1,48 @@
+Modifiers and buffs need to:
+	- Buff any and all stats
+	- Deal damage over time
+	- Heal damage over time
+	- Slow move speed
+	- Stun
+	- Block damage
+
+Stat buffs:
+	- Reference to the stats
+	- Just change them on start, track how much you changed them, change back on end
+
+Damage over time:
+	- Just send 'on_damage()' every so often - easy
+
+Slow:
+	- Same as stat buff - movespeed is a stat!
+
+Stun:
+	- Send interrupt_all(high priority) every frame
+
+Absorb damage:
+	- Send on_damage(-damage) every time it's recieved
+	- At end, deal damage all around = how much has been taken
+
+Storage and updating:
+	- Store buffs and modifiers in a separate list
+	- Buffs for complex effects, modifiers for simple stat buffs
+	- Apply modifiers in order every turn to the base stats (keep copy of base)
+	- Update buffs every turn, call start and end at start and end
+
+########
+# BUFF #
+########
+
+GameObject player
+float duration
+
+start() - any effects that need to take place throughout
+tick()  - update function
+end()	- called after duration is over
+
+############
+# MODIFIER #
+############
+
+tick()   - update duration
+modify() - update stats with your modification

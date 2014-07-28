@@ -72,9 +72,10 @@ using System.Collections;
 public abstract class IAbility : MonoBehaviour {
 	// reference to the control so we can interrupt
 	// other abilities via interrupt_all()
-	public IControl control;
-	public UserInterface userInterface;	
-	public UnitStats stats;
+	protected IControl control;
+	protected UnitStats stats;
+
+	protected UserInterface userInterface;
 	
 	// cooldown of this ability
 	public float cooldown;
@@ -146,12 +147,14 @@ public abstract class IAbility : MonoBehaviour {
 	 */
 	protected virtual void target()
 	{
+		if (userInterface == null) userInterface = GetComponentInParent<UserInterface>();
 		userInterface.targeting = true;
 		targeting_ = true;
 	}
 	
 	protected virtual void done_targeting()
 	{
+		if (userInterface == null) userInterface = GetComponentInParent<UserInterface>();
 		userInterface.targeting = false;
 		targeting_ = false;
 	}
@@ -189,7 +192,7 @@ public abstract class IAbility : MonoBehaviour {
 	{
 		if (!turning_) return;
 		
-		if (turn_time_ <= 0.0f) {
+		if (turn_duration_ <= 0.0f) {
 			turning_ = false;
 			done_turn();
 			return;
@@ -207,10 +210,17 @@ public abstract class IAbility : MonoBehaviour {
 	 * done_turn() - empty implementation to be overriden
 	 * in child classes
 	 */
-	protected virtual void done_turn() { /* empty */ }
+	protected abstract void done_turn();
 	
 	protected virtual void update_cooldown()
 	{
 		if (current_cooldown_ >= 0) current_cooldown_ -= Time.deltaTime;
+	}
+	
+	protected void Start()
+	{
+		control = GetComponent<IControl>();
+		userInterface = GetComponentInParent<UserInterface>();
+		stats = GetComponent<UnitStats>();
 	}
 }

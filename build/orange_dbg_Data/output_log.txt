@@ -1,0 +1,39 @@
+Initialize engine version: 4.5.2f1 (9abb1b59b47c)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [aticfx64.dll 8.17.10.1247]
+    Renderer: AMD Radeon HD 7700 Series
+    Vendor:   ATI
+    VRAM:     971 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=1
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Liam\workspace\orange\build\orange_dbg_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Liam\workspace\orange\build\orange_dbg_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Liam\workspace\orange\build\orange_dbg_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Liam\workspace\orange\build\orange_dbg_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.039 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Attempting to connect to server...
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GameInitialization:display_server_buttons() (at C:\Users\Liam\workspace\orange\Unity\Assets\Scripts\GameInitialization.cs:40)
+GameInitialization:OnGUI() (at C:\Users\Liam\workspace\orange\Unity\Assets\Scripts\GameInitialization.cs:18)
+ 
+(Filename: C Line: 0)
+
+PlayerConnection accepted from [192.168.1.64] handle:0x83c
+Profiler is only supported with Pro License
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/Runtime/Profiler/ProfilerConnection.cpp Line: 218)
+
+instantiating a rogue!
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GameInitialization:display_character_buttons() (at C:\Users\Liam\workspace\orange\Unity\Assets\Scripts\GameInitialization.cs:66)
+GameInitialization:OnGUI() (at C:\Users\Liam\workspace\orange\Unity\Assets\Scripts\GameInitialization.cs:19)
+ 
+(Filename: C Line: 0)
+
+Waiting for finish

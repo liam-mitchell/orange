@@ -1,0 +1,95 @@
+Initial loading screen:
+	- Two buttons: start server, join server
+	- On start server:
+		- Open character select screen
+	- On join server:
+		- Open server select screen
+	- On select server:
+		- Open character select screen
+
+Character select screen:
+	- Buttons for each character
+		- If character is selected by someone else no button
+		- If character is selected by you replaced by ready button
+	- Ready button:
+		- Send ready message to server
+		- Replace buttons with 'selected character: ' string
+		- If server:
+			- Ready message:
+				- Increment ready count
+				- If all are ready:
+					- Send load level message
+	- Load level message:
+		- Create persistent player object over network
+		- Load level
+		- If server:
+			- Network instantiate enemies
+
+MasterServerScreen:
+	bool joining
+	bool creating
+	bool selecting
+
+	private HostData[] hosts
+
+	private class PlayerSelection {
+		PlayerSelection() {}
+		PlayerSelection(string p, bool s) {player = p; selected = s;}
+		public string player;
+		public bool selected;
+	}
+
+	private PlayerSelection [] selections = new PlayerSelection[] {
+						(rogue, false) }
+	private string selected;
+
+	join_server():
+		joining = true
+	create_server():
+		creating = true
+	select_server(HostData h):
+		Network.Connect(h)
+		selecting = true;
+		creating = false;
+		joining = false;
+	start_server():
+		Network.InitializeServer()
+		MasterServer.RegisterHost()
+		selecting = true;
+		creating = false;
+		joining = false;
+
+	ongui():
+		if joining:
+			display_choose_server_buttons()
+		else if creating:
+			display_create_server_buttons()
+		else if selecting:
+			display_select_character_buttons()
+		else:
+			display_start_server_buttons()
+
+	display_start_server_buttons():
+		if join_server button:
+			join_server()
+		else if create_server button:
+			create_server()
+
+	display_create_server_buttons():
+		textbox(server_name)
+		if start_server button && !server_name.empty
+			start_server()
+
+	display_choose_server_buttons():
+		for each host:
+			if join_host button:
+				select_server(host)
+
+	display_select_character_buttons()
+		for each PlayerSelection in p:
+			if !p.selected && select_p button:
+				select(p)
+
+	select(PlayerSelection p)
+		p.selected = true
+		selected = p.player;

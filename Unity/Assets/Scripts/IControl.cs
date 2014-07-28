@@ -15,24 +15,81 @@ using System.Collections.Generic;
  ************************************************/
 
 public abstract class IControl : MonoBehaviour {
-	public List<IAbility> abilities;
+	protected List<IAbility> abilities_;
+	protected List<IModifier> modifiers_;
+	protected List<IEffect> effects_;
 
 	// Use this for initialization
-	void Start () {
+	protected void Start () {
+		IAbility[] abilities = GetComponents<IAbility>();
+		abilities_ = new List<IAbility>();
+		foreach (IAbility a in abilities) {
+			abilities_.Add(a);
+		}
+
+		modifiers_ = new List<IModifier>();
+		effects_ = new List<IEffect>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
+		List<IEffect> dead_effects = new List<IEffect>();
+		foreach (IEffect e in effects_) {
+			if (e.tick ()) {
+				dead_effects.Add (e);
+			}
+		}
 
+		foreach (IEffect e in dead_effects) {
+			effects_.Remove(e);
+		}
 	}
 	
 	public virtual bool interrupt_all(int priority, IAbility source)
 	{
-		foreach (IAbility a in abilities)
+		foreach (IAbility a in abilities_)
 		{
 			if (!a.on_interrupt(priority, source)) return false;
 		}
 		
 		return true;
+	}
+
+	public void add_modifier(IModifier modifier)
+	{
+		modifiers_.Add (modifier);
+	}
+
+	public void remove_modifier(IModifier modifier)
+	{
+		modifiers_.RemoveAll (x => x == modifier);
+	}
+
+	public void add_effect(IEffect effect)
+	{
+		Debug.Log ("effect added!");
+		effects_.Add (effect);
+	}
+
+	public void remove_effect(IEffect effect)
+	{
+		effects_.RemoveAll (x => x == effect);
+	}
+
+	protected void add_nav_mesh_agent()
+	{
+		NavMeshHit hit;
+		if (NavMesh.SamplePosition(transform.position,
+		                           out hit,
+		                           500,
+		                           1))
+		{
+			transform.position = hit.position;
+			gameObject.AddComponent<NavMeshAgent>();
+		}
+		else {
+			Debug.Log ("Error adding nav mesh agent!");
+		}
+		
 	}
 }

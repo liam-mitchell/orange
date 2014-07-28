@@ -71,13 +71,13 @@ public class UnitStats : MonoBehaviour {
 		float damage = baseDamage;
 		switch(primary_attribute_) {
 		case Attributes.STRENGTH:
-			damage += strength;
+			damage += strength * 0.5f;
 			break;
 		case Attributes.AGILITY:
-			damage += agility;
+			damage += agility * 0.5f;
 			break;
 		case Attributes.INTELLIGENCE:
-			damage += intelligence;
+			damage += intelligence * 0.5f;
 			break;
 		}
 		

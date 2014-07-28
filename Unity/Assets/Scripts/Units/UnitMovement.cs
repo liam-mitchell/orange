@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class UnitMovement : IAbility {
-	public float moveSpeed;
-	public float turnSpeed;
-	
+public class UnitMovement : IAbility {	
 	private Vector3 move_target_;
 	private bool moving_;
-	
+
+	private Queue<Vector3> move_path_;
+
 	private Animator animator_;
 	
 	public override bool on_interrupt(int priority, IAbility source)
@@ -38,15 +38,30 @@ public class UnitMovement : IAbility {
 	
 	private void update_animator()
 	{
-		animator_.SetBool("moving", moving_);
+		if (animator_ != null) animator_.SetBool("moving", moving_);
 	}
 	
 	public void update_target(Vector3 target)
 	{
 		move_target_ = target;
-		moving_ = false;
-		turning_ = false;
-		turn(target);
+		NavMeshPath path = new NavMeshPath();
+		NavMesh.CalculatePath(transform.position, move_target_, -1, path);
+
+		if (path.status == NavMeshPathStatus.PathComplete
+		    || path.status == NavMeshPathStatus.PathPartial) {
+			move_path_ = new Queue<Vector3>();
+			foreach (Vector3 node in path.corners) {
+				move_path_.Enqueue (node);
+			}
+
+			move_path_.Dequeue();
+			moving_ = false;
+			turning_ = false;
+			turn (move_path_.Peek());
+		}
+		else {
+			Debug.Log("Couldn't find good path!");
+		}
 	}
 	
 	private void update_move()
@@ -63,18 +78,25 @@ public class UnitMovement : IAbility {
 	
 	private void move()
 	{
-		Vector3 direction = (move_target_ + Vector3.up * .1f) - transform.position;
-		if (direction.magnitude < 0.5f) {
+		if (move_path_.Count == 0) {
 			moving_ = false;
-			active_ = false;
+			turning_ = false;
+			return;
+		}
+
+		Vector3 direction = (move_path_.Peek () + Vector3.up * .1f) - transform.position;
+		if (direction.magnitude < 0.5f) {
+			move_path_.Dequeue();
+			if (move_path_.Count > 0 ) turn(move_path_.Peek ());
 		}
 		else {
-			transform.position += direction.normalized * moveSpeed * Time.deltaTime;
+			transform.position += direction.normalized * stats.movespeed * Time.deltaTime;
 		}
 	}
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
+		base.Start();
 		animator_ = GetComponent<Animator>();
 		control = GetComponent<CharacterControl>();
 	}

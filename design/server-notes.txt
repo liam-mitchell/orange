@@ -1,0 +1,47 @@
+Server
+	- What needs to be synchronized?
+	- What RPCs do we need?
+	- How much work will the server do? (lots)
+	- How and when will we synchronize?
+
+What needs to be synchronized?
+	- Position
+	- Animator state
+	- HP / Mana	
+
+What RPCs do we need?
+	- Input calls should be RPC
+
+What will the server do?
+	- Respond to all input appropriately
+		- Player sends input call to server, also updates locally
+		- Server responds to input call, updates position, etc...
+	- Server syncs with players as often as it can
+	
+
+Initialization:
+	- Start with loaded static environment
+	- Start server buttons, join server list
+	- On start/join server:
+		- Character select buttons
+	- On character select buttons:
+		- Network.Instantiate player
+			- player Network.Instantiate character
+
+	- On start server:
+		- Network.Instantiate EnemySpawner
+
+Server buttons:
+	- Start server:
+		- Switch to character select buttons
+		- Register host
+		- Create enemy spawner
+	- Join server:
+		- Switch to character select buttons
+		- Connect to host
+
+Character select buttons:
+	- Select character:
+		- Remove character select buttons
+		- Network.Instantiate player object
+			- player Network.Instantiate character
