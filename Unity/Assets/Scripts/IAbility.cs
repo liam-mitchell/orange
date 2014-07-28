@@ -210,7 +210,7 @@ public abstract class IAbility : MonoBehaviour {
 	 * done_turn() - empty implementation to be overriden
 	 * in child classes
 	 */
-	protected virtual void done_turn() { /* empty */ }
+	protected abstract void done_turn();
 	
 	protected virtual void update_cooldown()
 	{

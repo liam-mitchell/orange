@@ -26,11 +26,23 @@ public abstract class IControl : MonoBehaviour {
 		foreach (IAbility a in abilities) {
 			abilities_.Add(a);
 		}
+
+		modifiers_ = new List<IModifier>();
+		effects_ = new List<IEffect>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
+		List<IEffect> dead_effects = new List<IEffect>();
+		foreach (IEffect e in effects_) {
+			if (e.tick ()) {
+				dead_effects.Add (e);
+			}
+		}
 
+		foreach (IEffect e in dead_effects) {
+			effects_.Remove(e);
+		}
 	}
 	
 	public virtual bool interrupt_all(int priority, IAbility source)
@@ -55,6 +67,7 @@ public abstract class IControl : MonoBehaviour {
 
 	public void add_effect(IEffect effect)
 	{
+		Debug.Log ("effect added!");
 		effects_.Add (effect);
 	}
 

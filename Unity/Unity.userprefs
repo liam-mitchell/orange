@@ -2,10 +2,12 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Units\Enemies\EnemyMovement.cs">
     <Files>
-      <File FileName="Assets\Scripts\Units\UnitMovement.cs" Line="41" Column="26" />
-      <File FileName="Assets\Scripts\Units\Enemies\EnemyMovement.cs" Line="8" Column="7" />
-      <File FileName="Assets\Scripts\IAbility.cs" Line="222" Column="34" />
-      <File FileName="Assets\Scripts\Units\Enemies\EnemyControl.cs" Line="28" Column="4" />
+      <File FileName="Assets\Scripts\Units\Characters\Fighter\FighterBash.cs" Line="123" Column="3" />
+      <File FileName="Assets\Scripts\IEffect.cs" Line="23" Column="16" />
+      <File FileName="Assets\Scripts\IAbility.cs" Line="213" Column="20" />
+      <File FileName="c:\Users\Liam\workspace\orange\Unity\Assets\Scripts\IControl.cs" Line="36" Column="52" />
+      <File FileName="Assets\Scripts\Units\Characters\CharacterControl.cs" Line="52" Column="4" />
+      <File FileName="Assets\Scripts\Units\Enemies\EnemyMovement.cs" Line="33" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

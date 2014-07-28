@@ -20,7 +20,8 @@ public class EnemyControl : IControl {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	new void Update () {
+		base.Update();
 		last_retarget_time_ += Time.deltaTime;
 		if (last_retarget_time_ > RETARGET_TIME) {
 			retarget();

@@ -41,9 +41,15 @@ public class CharacterControl : IControl
 	}
 
 	// Update is called once per frame
-	void Update () {
+	new void Update () {
+		base.Update ();
 		clamp_height ();		
 		if (!selected) return;
+
+		if (Input.GetKeyDown(KeyCode.S)) {
+			interrupt_all(int.MaxValue, null);
+			return;
+		}
 		// TODO: add buttons to this as abilities require
 		foreach (IAbility a in abilities_)
 		{

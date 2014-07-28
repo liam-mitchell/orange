@@ -10,7 +10,9 @@ public class CharacterAttack : IAbility {
 	 * where t = final attack time
 	 * 		 b = base attack time
 	 * 		 s = attack speed
-	 */	
+	 */
+	public float attackRange;
+
 	private float attack_duration_;
 	private float attack_time_;
 	
@@ -26,7 +28,9 @@ public class CharacterAttack : IAbility {
 	public override void on_rmouse()
 	{
 		target_ = userInterface.mouseover_object();
+		Debug.Log (target_);
 		active_ = true;
+		Debug.Log (active_);
 	}
 	
 	/**
@@ -96,7 +100,7 @@ public class CharacterAttack : IAbility {
 	private bool in_range()
 	{
 		if (target_ == null) return false;
-		if ((target_.transform.position - transform.position).magnitude < 1.0f) return true;
+		if ((target_.transform.position - transform.position).magnitude < attackRange) return true;
 		return false;
 	}
 	
@@ -125,7 +129,7 @@ public class CharacterAttack : IAbility {
 			&& control.interrupt_all(priority_, this)) {
 				turn (target_.transform.position);
 		}
-		
+
 		update_turn ();
 		update_attack();
 	}

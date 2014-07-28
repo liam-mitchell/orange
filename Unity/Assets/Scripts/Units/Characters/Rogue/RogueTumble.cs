@@ -52,7 +52,9 @@ public class RogueTumble : IAbility {
 			tumble_time_ += Time.deltaTime;
 		}
 	}
-	
+
+	override protected void done_turn() { /* empty */ }
+
 	private void update_animator()
 	{
 		animator_.SetBool("tumbling", active_);
