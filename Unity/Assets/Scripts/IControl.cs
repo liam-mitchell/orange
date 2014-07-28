@@ -15,13 +15,17 @@ using System.Collections.Generic;
  ************************************************/
 
 public abstract class IControl : MonoBehaviour {
-	public List<IAbility> abilities;
-
+	protected List<IAbility> abilities_;
 	protected List<IModifier> modifiers_;
 	protected List<IEffect> effects_;
 
 	// Use this for initialization
-	void Start () {
+	protected void Start () {
+		IAbility[] abilities = GetComponents<IAbility>();
+		abilities_ = new List<IAbility>();
+		foreach (IAbility a in abilities) {
+			abilities_.Add(a);
+		}
 	}
 	
 	// Update is called once per frame
@@ -31,7 +35,7 @@ public abstract class IControl : MonoBehaviour {
 	
 	public virtual bool interrupt_all(int priority, IAbility source)
 	{
-		foreach (IAbility a in abilities)
+		foreach (IAbility a in abilities_)
 		{
 			if (!a.on_interrupt(priority, source)) return false;
 		}

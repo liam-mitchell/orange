@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Units\Characters\Rogue\RogueShank.cs" />
      <Compile Include="Assets\Scripts\Units\Characters\Rogue\RogueTumble.cs" />
      <Compile Include="Assets\Scripts\Units\Enemies\EnemyControl.cs" />
+     <Compile Include="Assets\Scripts\Units\Enemies\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\Units\Enemies\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\Units\UnitMovement.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStats.cs" />

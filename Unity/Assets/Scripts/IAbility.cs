@@ -219,7 +219,7 @@ public abstract class IAbility : MonoBehaviour {
 	
 	protected void Start()
 	{
-		control = GetComponent<CharacterControl>();
+		control = GetComponent<IControl>();
 		userInterface = GetComponentInParent<UserInterface>();
 		stats = GetComponent<UnitStats>();
 	}

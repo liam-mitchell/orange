@@ -7,7 +7,6 @@ public class UnitMovement : IAbility {
 	private bool moving_;
 
 	private Queue<Vector3> move_path_;
-	private NavMeshAgent move_agent_;
 
 	private Animator animator_;
 	
@@ -39,29 +38,29 @@ public class UnitMovement : IAbility {
 	
 	private void update_animator()
 	{
-		animator_.SetBool("moving", moving_);
+		if (animator_ != null) animator_.SetBool("moving", moving_);
 	}
 	
 	public void update_target(Vector3 target)
 	{
 		move_target_ = target;
 		NavMeshPath path = new NavMeshPath();
+		NavMesh.CalculatePath(transform.position, move_target_, -1, path);
 
-		move_agent_.CalculatePath(move_target_, path);
-
-		if (path.status == NavMeshPathStatus.PathComplete) {
-			Debug.Log("Move path:");
+		if (path.status == NavMeshPathStatus.PathComplete
+		    || path.status == NavMeshPathStatus.PathPartial) {
 			move_path_ = new Queue<Vector3>();
 			foreach (Vector3 node in path.corners) {
 				move_path_.Enqueue (node);
-				Debug.Log (node);
 			}
 
 			move_path_.Dequeue();
-
 			moving_ = false;
 			turning_ = false;
 			turn (move_path_.Peek());
+		}
+		else {
+			Debug.Log("Couldn't find good path!");
 		}
 	}
 	
@@ -100,7 +99,6 @@ public class UnitMovement : IAbility {
 		base.Start();
 		animator_ = GetComponent<Animator>();
 		control = GetComponent<CharacterControl>();
-		move_agent_ = GetComponent<NavMeshAgent>();
 	}
 	
 	// Update is called once per frame

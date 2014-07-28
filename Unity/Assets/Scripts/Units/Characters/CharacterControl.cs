@@ -35,18 +35,17 @@ public class CharacterControl : IControl
 	}
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
+		base.Start();
 		add_nav_mesh_agent ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		clamp_height ();
-		
+		clamp_height ();		
 		if (!selected) return;
-		
 		// TODO: add buttons to this as abilities require
-		foreach (IAbility a in abilities)
+		foreach (IAbility a in abilities_)
 		{
 			if (Input.GetMouseButtonDown(1)) a.on_rmouse ();
 			if (Input.GetMouseButtonDown(0)) a.on_lmouse ();
