@@ -216,9 +216,15 @@ public abstract class IAbility : MonoBehaviour {
 	{
 		if (current_cooldown_ >= 0) current_cooldown_ -= Time.deltaTime;
 	}
+
+	protected bool on_cooldown()
+	{
+		return current_cooldown_ >= 0;
+	}
 	
 	protected void Start()
 	{
+		current_cooldown_ = -1;
 		control = GetComponent<IControl>();
 		userInterface = GetComponentInParent<UserInterface>();
 		stats = GetComponent<UnitStats>();

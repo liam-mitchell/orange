@@ -7,6 +7,7 @@ public class RogueBlink : IAbility {
 	
 	private bool blinking_;
 	private bool shanking_;
+	private bool shanked_this_shank_;
 	
 	public float blinkDuration;
 	private float blink_time_;
@@ -98,7 +99,10 @@ public class RogueBlink : IAbility {
 		
 		shank_time_ += Time.deltaTime;
 		
-		if (shank_time_ >= 0.5f * shankDuration) {
+		if (shank_time_ >= 0.5f * shankDuration
+		    && !shanked_this_shank_)
+		{
+			shanked_this_shank_ = true;
 			target_.SendMessage("on_attack_damage", damage);
 		}
 		
@@ -135,6 +139,7 @@ public class RogueBlink : IAbility {
 		active_ = false;
 		blinking_ = false;
 		shanking_ = false;
+		shanked_this_shank_ = false;
 		turning_ = false;
 		blink_time_ = 0;
 		shank_time_ = 0;

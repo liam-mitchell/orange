@@ -67,7 +67,6 @@ public abstract class IControl : MonoBehaviour {
 
 	public void add_effect(IEffect effect)
 	{
-		Debug.Log ("effect added!");
 		effects_.Add (effect);
 	}
 

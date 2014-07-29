@@ -1,13 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Units\Enemies\EnemyMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Units\Characters\Rogue\RogueBlink.cs">
     <Files>
-      <File FileName="Assets\Scripts\Units\Characters\Fighter\FighterBash.cs" Line="123" Column="3" />
-      <File FileName="Assets\Scripts\IEffect.cs" Line="23" Column="16" />
-      <File FileName="Assets\Scripts\IAbility.cs" Line="213" Column="20" />
-      <File FileName="c:\Users\Liam\workspace\orange\Unity\Assets\Scripts\IControl.cs" Line="36" Column="52" />
-      <File FileName="Assets\Scripts\Units\Characters\CharacterControl.cs" Line="52" Column="4" />
-      <File FileName="Assets\Scripts\Units\Enemies\EnemyMovement.cs" Line="33" Column="26" />
+      <File FileName="Assets\Scripts\Units\Enemies\EnemyAttack.cs" Line="96" Column="19" />
+      <File FileName="Assets\Scripts\Units\Enemies\EnemyControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Units\Enemies\EnemyMovement.cs" Line="21" Column="17" />
+      <File FileName="Assets\Scripts\Units\UnitStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Units\Characters\CharacterAttack.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Units\Characters\Rogue\RogueShank.cs" Line="10" Column="25" />
+      <File FileName="Assets\Scripts\Units\Characters\Rogue\RogueBlink.cs" Line="105" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

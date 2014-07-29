@@ -2,6 +2,8 @@
 using System.Collections;
 
 public abstract class IEffect {
+	protected static float STUN_PRIORITY = 100;
+
 	protected IControl control_;
 	protected float duration_;
 	protected float current_time_;

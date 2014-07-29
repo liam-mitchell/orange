@@ -8,7 +8,7 @@ public class UnitMovement : IAbility {
 
 	private Queue<Vector3> move_path_;
 
-	private Animator animator_;
+	protected Animator animator_;
 	
 	public override bool on_interrupt(int priority, IAbility source)
 	{
@@ -36,9 +36,9 @@ public class UnitMovement : IAbility {
 		}
 	}
 	
-	private void update_animator()
+	protected void update_animator()
 	{
-		if (animator_ != null) animator_.SetBool("moving", moving_);
+		if (animator_ != null) animator_.SetBool("moving", moving_ || turning_);
 	}
 	
 	public void update_target(Vector3 target)

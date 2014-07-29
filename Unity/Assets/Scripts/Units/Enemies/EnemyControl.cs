@@ -44,7 +44,6 @@ public class EnemyControl : IControl {
 
 		if (in_range_targets_.Count == 0) {
 			target_ = null;
-			Debug.Log("No targets in range");
 			return;
 		}
 
@@ -60,6 +59,5 @@ public class EnemyControl : IControl {
 		}
 
 		target_ = closest;
-		Debug.Log(target_);
 	}
 }

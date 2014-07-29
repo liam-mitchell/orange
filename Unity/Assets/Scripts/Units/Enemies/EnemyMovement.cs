@@ -16,16 +16,18 @@ public class EnemyMovement : UnitMovement {
 
 	new void Start() {
 		base.Start();
+		animator_ = GetComponent<Animator>();
 		enemy_control_ = control as EnemyControl;
+		priority_ = 0;
 	}
 
 	private bool in_range()
 	{
 		if (target_ == null) return false;
-		if ((target_.transform.position - transform.position).magnitude > 1.0f) return false;
+		if ((target_.transform.position - transform.position).magnitude > 1.5f) return false;
 		return true;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		retarget_time_ += Time.deltaTime;
@@ -38,7 +40,7 @@ public class EnemyMovement : UnitMovement {
 			target_ = enemy_control_.target_;
 			retarget_time_ = 0;
 			if (target_ != null) {
-				update_target(target_.transform.position - target_.transform.forward);
+				update_target(target_.transform.position);
 				active_ = true;
 			}
 		}

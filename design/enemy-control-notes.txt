@@ -1,0 +1,23 @@
+Enemies need to decide when and how to:
+	- Move
+	- Attack
+		- Choose targets
+		- Use abilities
+
+To move they need:
+	- A target
+	- A way to find a path
+
+Target selection:
+	- Collider reaching out to view range
+	- On enter, IF player add to targets list
+	- Choose closest target
+	- Refresh target every few seconds (3 to start?)
+
+Ability use:
+	- Abilities have their own activation conditions
+	- Interrupts like standard for abilities
+
+Enemy update:
+	- update_target()
+	- update_abilities()

@@ -28,9 +28,7 @@ public class CharacterAttack : IAbility {
 	public override void on_rmouse()
 	{
 		target_ = userInterface.mouseover_object();
-		Debug.Log (target_);
 		active_ = true;
-		Debug.Log (active_);
 	}
 	
 	/**
