@@ -48,7 +48,12 @@ public class EnemyAttack : IAbility {
 
 	private void hit()
 	{
-		enemy_control.target_.SendMessage("attack_damage", damage);
+		if (enemy_control.target_ != null) {
+			enemy_control.target_.SendMessage("attack_damage", damage);
+		}
+		else {
+			done_attack();
+		}
 		hit_this_attack_ = true;
 	}
 
