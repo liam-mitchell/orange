@@ -103,7 +103,7 @@ public class RogueBlink : IAbility {
 		    && !shanked_this_shank_)
 		{
 			shanked_this_shank_ = true;
-			target_.SendMessage("on_attack_damage", damage);
+			target_.SendMessage("attack_damage", damage);
 		}
 		
 		if (shank_time_ >= shankDuration) {

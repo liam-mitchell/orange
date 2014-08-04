@@ -2,14 +2,14 @@
 using System.Collections;
 
 public class UnitStats : MonoBehaviour {
-	public int strength;
-	public int agility;
-	public int intelligence;
+	public float strength;
+	public float agility;
+	public float intelligence;
 	
-	public int baseDamage;
-	public int baseArmor;
-	public int baseHitpoints;
-	public int baseMana;
+	public float baseDamage;
+	public float baseArmor;
+	public float baseHitpoints;
+	public float baseMana;
 	public float baseAttackTime;
 	
 	public float movespeed;
@@ -82,6 +82,32 @@ public class UnitStats : MonoBehaviour {
 		}
 		
 		return damage;
+	}
+
+	public UnitStats clone()
+	{
+		return (UnitStats)MemberwiseClone();
+	}
+
+	public void reset_modifiers(UnitStats other)
+	{
+		strength = other.strength;
+		agility = other.agility;
+		intelligence = other.intelligence;
+
+		baseHitpoints = other.baseHitpoints;
+		baseMana = other.baseMana;
+		baseArmor = other.baseArmor;
+		baseAttackTime = other.baseAttackTime;
+		baseDamage = other.baseDamage;
+
+		movespeed = other.movespeed;
+		turnspeed = other.turnspeed;
+
+		primaryAttribute = other.primaryAttribute;
+		primary_attribute_ = other.primary_attribute_;
+
+		recalc_max_hp_mana();
 	}
 	
 	void Update() 

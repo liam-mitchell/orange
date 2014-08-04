@@ -58,6 +58,8 @@ public class CharacterControl : IControl
 			if (Input.GetKeyDown (KeyCode.Space)) a.on_space ();
 			if (Input.GetKeyDown (KeyCode.Q)) a.on_qkey ();
 			if (Input.GetKeyDown (KeyCode.W)) a.on_wkey ();
+			if (Input.GetKeyDown (KeyCode.E)) a.on_ekey ();
+			if (Input.GetKeyDown (KeyCode.R)) a.on_rkey ();
 		}
 	}
 }

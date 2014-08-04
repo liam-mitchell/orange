@@ -119,6 +119,8 @@ public abstract class IAbility : MonoBehaviour {
 	public virtual void on_space() { /* empty */ }
 	public virtual void on_qkey() { /* empty */ }
 	public virtual void on_wkey() { /* empty */ }
+	public virtual void on_ekey() { /* empty */ }
+	public virtual void on_rkey() { /* empty */ }
 	
 	/**
 	 * on_interrupt() - interrupt this ability with the given priority

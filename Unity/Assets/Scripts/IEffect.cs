@@ -14,8 +14,6 @@ public abstract class IEffect {
 		current_time_ = 0;
 	}
 
-	public abstract void start();
-
 	public virtual bool tick() 
 	{
 		current_time_ += Time.deltaTime;

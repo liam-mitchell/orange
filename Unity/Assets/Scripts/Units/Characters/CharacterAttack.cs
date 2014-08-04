@@ -84,7 +84,7 @@ public class CharacterAttack : IAbility {
 		if (attack_time_ > 0.5f * attack_duration_
 			&& !hit_this_attack_)
 		{
-			target_.SendMessage("on_attack_damage", stats.attack_damage());
+			target_.SendMessage("attack_damage", stats.attack_damage());
 			hit_this_attack_ = true;
 		}
 		else if (attack_time_ > attack_duration_) {
