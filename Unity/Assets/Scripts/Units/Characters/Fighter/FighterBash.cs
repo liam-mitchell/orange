@@ -35,6 +35,7 @@ public class FighterBash : IAbility {
 
 	private void bash()
 	{
+		if (!cast()) return;
 		bashing_ = true;
 		targeting_ = false;
 		bash_time_ = 0;

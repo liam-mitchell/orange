@@ -22,6 +22,7 @@ public class FighterShout : IAbility {
 
 	private void shout()
 	{
+		if (!cast()) return;
 		shout_time_ = 0;
 		active_ = true;
 	}

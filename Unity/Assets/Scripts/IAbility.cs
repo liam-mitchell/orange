@@ -79,6 +79,8 @@ public abstract class IAbility : MonoBehaviour {
 	
 	// cooldown of this ability
 	public float cooldown;
+
+	public float manaCost;
 	
 	// are we active?
 	protected bool active_;
@@ -222,6 +224,14 @@ public abstract class IAbility : MonoBehaviour {
 	protected bool on_cooldown()
 	{
 		return current_cooldown_ >= 0;
+	}
+
+	protected virtual bool cast() {
+		if (!stats.cast(manaCost)) {
+			on_interrupt(int.MaxValue, null);
+			return false;
+		}
+		return true;
 	}
 	
 	protected void Start()

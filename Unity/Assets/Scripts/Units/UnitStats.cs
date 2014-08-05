@@ -61,6 +61,15 @@ public class UnitStats : MonoBehaviour {
 	{
 		current_hp -= damage;
 	}
+
+	public bool cast(float manacost)
+	{
+		if (current_mana - manacost >= 0) {
+			current_mana -= manacost;
+			return true;
+		}
+		return false;
+	}
 	
 	private void recalc_max_hp_mana() {
 		max_hp = strength * 10 + baseHitpoints;

@@ -74,6 +74,7 @@ public class RogueShank : IAbility {
 	 */
 	private void shank()
 	{		
+		if (!cast()) return;
 		shanking_ = true;
 		targeting_ = false;
 		shank_time_ = 0;

@@ -27,6 +27,7 @@ public class FighterCharge : IAbility {
 
 	private void charge()
 	{
+		if (!cast()) return;
 		active_ = true;
 		charge_start_ = transform.position;
 

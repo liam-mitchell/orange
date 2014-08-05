@@ -11,7 +11,7 @@ public class FighterParry : IAbility {
 
 	private void parry()
 	{
-		control.add_effect(new ParryEffect(control, 5.0f, 3));
+		if (cast()) control.add_effect(new ParryEffect(control, 5.0f, 3));
 	}
 
 	// Use this for initialization

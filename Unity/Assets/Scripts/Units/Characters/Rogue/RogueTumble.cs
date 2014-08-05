@@ -14,6 +14,7 @@ public class RogueTumble : IAbility {
 	
 	public override void on_space()
 	{
+		if (!cast()) return;
 		if (!(current_cooldown_ > 0)
 			&& !active_
 			&& control.interrupt_all (priority_, this)) 
@@ -62,6 +63,7 @@ public class RogueTumble : IAbility {
 
 	// Use this for initialization
 	new void Start () {
+		base.Start ();
 		animator_ = GetComponent<Animator>();
 		priority_ = 2;
 		active_ = false;

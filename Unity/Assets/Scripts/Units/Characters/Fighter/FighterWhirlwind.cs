@@ -33,6 +33,7 @@ public class FighterWhirlwind : IAbility {
 
 	private void whirl()
 	{
+		if (!cast()) return;
 		active_ = true;
 		current_tick_ = 0;
 		tick_time_ = 0.0f;

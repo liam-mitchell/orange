@@ -60,6 +60,7 @@ public class RogueBlink : IAbility {
 	
 	private void blink()
 	{
+		if (!cast()) return;
 		blinking_ = true;
 		blink_time_ = 0;
 		current_cooldown_ = cooldown;

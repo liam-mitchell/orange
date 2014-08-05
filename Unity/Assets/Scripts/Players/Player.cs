@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
 			character.transform.parent = transform;
 			selected = character;
 			userInterface.selected = selected;
+			userInterface.player = selected;
 			character_control_ = selected.GetComponent<CharacterControl>();
 		}
 	}
