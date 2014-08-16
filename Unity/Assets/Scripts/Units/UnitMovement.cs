@@ -73,7 +73,10 @@ public class UnitMovement : IAbility {
 	
 	protected override void done_turn()
 	{
-		if ((move_target_ + Vector3.up * .1f).magnitude > 0.5f) moving_ = true;
+		if ((move_target_ + Vector3.up * .1f).magnitude > 0.5f) {
+			moving_ = true;
+			turning_ = false;
+		}
 	}
 	
 	private void move()
@@ -102,11 +105,7 @@ public class UnitMovement : IAbility {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
-	
-	void FixedUpdate() {
+	protected virtual void FixedUpdate() {
 		if (active_) {
 			update_turn();
 			update_move();

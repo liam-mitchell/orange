@@ -62,6 +62,12 @@ public class UnitStats : MonoBehaviour {
 		current_hp -= damage;
 	}
 
+	public void on_heal(float health)
+	{
+		if (current_hp + health > max_hp) current_hp = max_hp;
+		else current_hp += health;
+	}
+
 	public bool cast(float manacost)
 	{
 		if (current_mana - manacost >= 0) {

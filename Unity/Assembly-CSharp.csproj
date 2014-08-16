@@ -58,6 +58,8 @@
      <Compile Include="Assets\Scripts\Units\Buffs\Modifiers\ArmorModifier.cs" />
      <Compile Include="Assets\Scripts\Units\Characters\CharacterAttack.cs" />
      <Compile Include="Assets\Scripts\Units\Characters\CharacterControl.cs" />
+     <Compile Include="Assets\Scripts\Units\Characters\CharacterGrab.cs" />
+     <Compile Include="Assets\Scripts\Units\Characters\CharacterInventory.cs" />
      <Compile Include="Assets\Scripts\Units\Characters\Fighter\FighterBash.cs" />
      <Compile Include="Assets\Scripts\Units\Characters\Fighter\FighterCharge.cs" />
      <Compile Include="Assets\Scripts\Units\Characters\Fighter\FighterParry.cs" />
@@ -68,8 +70,11 @@
      <Compile Include="Assets\Scripts\Units\Characters\Rogue\RogueTumble.cs" />
      <Compile Include="Assets\Scripts\Units\Enemies\EnemyAttack.cs" />
      <Compile Include="Assets\Scripts\Units\Enemies\EnemyControl.cs" />
+     <Compile Include="Assets\Scripts\Units\Enemies\EnemyDrop.cs" />
      <Compile Include="Assets\Scripts\Units\Enemies\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\Units\Enemies\EnemySpawner.cs" />
+     <Compile Include="Assets\Scripts\Units\Items\HealthPotion.cs" />
+     <Compile Include="Assets\Scripts\Units\Items\IItem.cs" />
      <Compile Include="Assets\Scripts\Units\UnitDeath.cs" />
      <Compile Include="Assets\Scripts\Units\UnitMovement.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStats.cs" />

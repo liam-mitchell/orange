@@ -85,7 +85,7 @@ public class EnemyAttack : IAbility {
 		base.Start();
 		enemy_control = control as EnemyControl;
 		animator_ = GetComponent<Animator>();
-		priority_ = 0;
+		priority_ = 1;
 		hit_this_attack_ = false;
 		attack_time_ = 0.0f;
 		attacking_ = false;

@@ -12,6 +12,12 @@ public class UnitDeath : MonoBehaviour {
 	{
 		animator_.SetBool("dead", true);
 		active_ = true;
+		EnemyDrop [] drops = GetComponents<EnemyDrop>();
+
+		foreach (EnemyDrop d in drops) {
+			if (d.drop_item()) break;
+		}
+
 		GameObject.Destroy(gameObject, deathDuration);
 	}
 

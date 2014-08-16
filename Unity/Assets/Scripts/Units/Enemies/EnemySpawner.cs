@@ -16,14 +16,14 @@ public class EnemySpawner : MonoBehaviour {
 		                     boneHeadPrefab.transform.position,
 		                     Quaternion.identity,
 		                     0);
-		Network.Instantiate (boneHeadPrefab,
-		                     boneHeadPrefab.transform.position + boneHeadPrefab.transform.forward,
-		                     Quaternion.identity,
-		                     0);
-		Network.Instantiate (boneHeadPrefab,
-		                     boneHeadPrefab.transform.position + boneHeadPrefab.transform.right,
-		                     Quaternion.identity,
-		                     0);
+//		Network.Instantiate (boneHeadPrefab,
+//		                     boneHeadPrefab.transform.position + boneHeadPrefab.transform.forward,
+//		                     Quaternion.identity,
+//		                     0);
+//		Network.Instantiate (boneHeadPrefab,
+//		                     boneHeadPrefab.transform.position + boneHeadPrefab.transform.right,
+//		                     Quaternion.identity,
+//		                     0);
 
 	}
 	// Use this for initialization

@@ -1,0 +1,34 @@
+Inventory consists of three major components:
+	- Items
+	- The ability to pick up items
+	- The inventory (and using items in it)
+
+Items:
+	- Model
+	- Spawn on death
+	- Within the item's MonoBehaviour, class implementing IItem
+	- on_pickup():
+		- control.add_item(new IItem)
+
+Picking up:
+	- Simple ability, similar to attack
+	- On in_range(), call item.on_pickup(control)
+
+inventory:
+	- Consider items buffs
+		- on_pickup() = add_modifier()
+		- on_drop() = remove_modifier()
+	- Items also have bool active_component:
+		- if active_component, update as if ability
+
+IItem:
+	- on_pickup()
+		- add_modifier() if necessary
+	- on_drop()
+		- remove_modifier() if necessary
+	- on_*key()
+		- activate as ability if necessary
+	- bool active_component
+		- should we call all of on_*key()?
+	- bool passive_component
+		- should we add_modifier()?
