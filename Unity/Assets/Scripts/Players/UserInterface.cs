@@ -34,10 +34,11 @@ public class UserInterface : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		if (selected != null) GUI.Label(new Rect(10, 10, 100, 20), selected.name);
-		draw_portrait();
-		draw_health_bubble();
-		draw_mana_bubble();
+		if (player != null) {
+			draw_portrait();
+			draw_health_bubble();
+			draw_mana_bubble();
+		}
 	}
 
 	private void draw_portrait()

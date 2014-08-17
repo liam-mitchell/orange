@@ -14,13 +14,12 @@ public class StunEffect : IEffect {
 	override public bool tick()
 	{
 		control_.interrupt_all(BASH_PRIORITY, null);
-		animator_.SetBool ("moving", false);
-		animator_.SetBool ("attacking", false);
+		animator_.SetBool ("stunned", true);
 		return base.tick ();
 	}
 		
 	override public void end()
 	{
-
+		animator_.SetBool ("stunned", false);
 	}
 }

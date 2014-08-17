@@ -28,7 +28,9 @@ public class CharacterAttack : IAbility {
 	public override void on_rmouse()
 	{
 		target_ = userInterface.mouseover_object();
-		active_ = true;
+		if (in_range()) {
+			active_ = true;
+		}
 	}
 	
 	/**
@@ -62,7 +64,6 @@ public class CharacterAttack : IAbility {
 		attack_time_ = 0;
 		attacking_ = true;
 		hit_this_attack_ = false;
-		update_animator();
 	}
 	
 	protected override void done_turn()
@@ -78,7 +79,12 @@ public class CharacterAttack : IAbility {
 	private void update_attack()
 	{
 		if (!attacking_) return;
-		
+		if (target_ == null) {
+			active_ = false;
+			attacking_ = false;
+			return;
+		}
+
 		attack_time_ += Time.deltaTime;
 		
 		if (attack_time_ > 0.5f * attack_duration_
@@ -115,7 +121,7 @@ public class CharacterAttack : IAbility {
 		attack_duration_ = 0;
 		active_ = false;
 		attacking_ = false;
-		priority_ = 0;
+		priority_ = 1;
 	}
 	
 	// Update is called once per frame
@@ -127,8 +133,8 @@ public class CharacterAttack : IAbility {
 			&& control.interrupt_all(priority_, this)) {
 				turn (target_.transform.position);
 		}
-
 		update_turn ();
 		update_attack();
+		update_animator();
 	}
 }

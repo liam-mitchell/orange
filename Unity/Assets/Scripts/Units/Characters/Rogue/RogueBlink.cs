@@ -45,6 +45,7 @@ public class RogueBlink : IAbility {
 			turning_ = false;
 			blinking_ = false;
 			shanking_ = false;
+			shanked_this_shank_ = false;
 			blink_time_ = 0;
 			shank_time_ = 0;
 			if (targeting_) done_targeting();
@@ -97,7 +98,7 @@ public class RogueBlink : IAbility {
 	private void update_shank()
 	{
 		if (!shanking_) return;
-		
+
 		shank_time_ += Time.deltaTime;
 		
 		if (shank_time_ >= 0.5f * shankDuration
@@ -110,6 +111,7 @@ public class RogueBlink : IAbility {
 		if (shank_time_ >= shankDuration) {
 			shanking_ = false;
 			active_ = false;
+			shanked_this_shank_ = false;
 			update_animator();
 		}
 	}

@@ -18,6 +18,7 @@ public class UnitStats : MonoBehaviour {
 	public string primaryAttribute;
 	
 	private Attributes primary_attribute_;
+	private bool dead;
 	
 	[HideInInspector] public float max_hp;
 	[HideInInspector] public float current_hp;
@@ -48,6 +49,8 @@ public class UnitStats : MonoBehaviour {
 		
 		current_hp = max_hp;
 		current_mana = max_mana;
+
+		dead = false;
 	}
 
 	public void on_attack_damage(float damage) 
@@ -66,6 +69,12 @@ public class UnitStats : MonoBehaviour {
 	{
 		if (current_hp + health > max_hp) current_hp = max_hp;
 		else current_hp += health;
+	}
+
+	public void on_restore_mana(float restore)
+	{
+		if (current_mana + restore > max_mana) current_mana = max_mana;
+		else current_mana += restore;
 	}
 
 	public bool cast(float manacost)
@@ -127,7 +136,8 @@ public class UnitStats : MonoBehaviour {
 	
 	void Update() 
 	{
-		if (current_hp <= 0) {
+		if (current_hp <= 0 && !dead) {
+			dead = true;
 			SendMessage("on_no_hitpoints");
 		}
 		

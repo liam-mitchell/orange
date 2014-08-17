@@ -12,10 +12,10 @@ public class HealthPotion : MonoBehaviour {
 
 		public float heal;
 
-		public override void on_zkey()
+		public override bool on_zkey()
 		{
 			control.SendMessage ("on_heal", heal);
-			control.SendMessage ("drop_item", this);
+			return true;
 		}
 
 		public override void on_pickup() { /* empty */ }

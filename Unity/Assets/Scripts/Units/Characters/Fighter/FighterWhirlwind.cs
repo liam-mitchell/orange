@@ -89,6 +89,7 @@ public class FighterWhirlwind : IAbility {
 		tick_time_ = 0.0f;
 		active_ = false;
 		current_tick_ = 0;
+		priority_ = 3;
 	}
 	
 	// Update is called once per frame

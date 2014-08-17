@@ -13,10 +13,22 @@ public class CharacterInventory : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		List<IItem> used_items = new List<IItem>();
 		foreach (IItem item in items_) {
 			if (Input.GetKeyDown(KeyCode.Z) && item.active) {
-				item.on_zkey();
+				if (item.on_zkey()) {
+					used_items.Add (item);
+				}
 			}
+			if (Input.GetKeyDown (KeyCode.X) && item.active) {
+				if (item.on_xkey()) {
+					used_items.Add (item);
+				}
+			}
+		}
+
+		foreach (IItem item in used_items) {
+			drop_item(item);
 		}
 	}
 

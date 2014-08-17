@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\Units\Enemies\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\Units\Items\HealthPotion.cs" />
      <Compile Include="Assets\Scripts\Units\Items\IItem.cs" />
+     <Compile Include="Assets\Scripts\Units\Items\ManaPotion.cs" />
      <Compile Include="Assets\Scripts\Units\UnitDeath.cs" />
      <Compile Include="Assets\Scripts\Units\UnitMovement.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStats.cs" />

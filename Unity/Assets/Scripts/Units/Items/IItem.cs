@@ -16,5 +16,6 @@ public abstract class IItem {
 	public IControl control;
 	public abstract void on_pickup();
 	public abstract void on_drop();
-	public virtual void on_zkey() { /* empty */ }
+	public virtual bool on_zkey() { return false; }
+	public virtual bool on_xkey() { return false; }
 }

@@ -85,6 +85,7 @@ public class GameInitialization : MonoBehaviour {
 	{
 		connected ();
 		enemy_spawner_.spawn_weak_spotter();
+		enemy_spawner_.spawn_bone_heads();
 	}
 
 	void OnConnectedToServer()

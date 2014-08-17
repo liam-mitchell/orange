@@ -117,7 +117,6 @@ public class RogueShank : IAbility {
 		Vector3 attack_direction = target_.transform.position - transform.position;
 		
 		if (attack_direction.magnitude > 1.0f) return false;
-		if (Vector3.Dot (attack_direction, target_.transform.forward) < 0) return false;
 		
 		return true;
 	}
