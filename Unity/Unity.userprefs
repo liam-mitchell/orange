@@ -1,21 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Units\Items\IItem.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Units\Characters\Rogue\RogueBlind.cs">
     <Files>
-      <File FileName="Assets\Scripts\Units\UnitDeath.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Players\UserInterface.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\Buffs\Effects\StunEffect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\Enemies\EnemySpawner.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Utilities\GameInitialization.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\Characters\Rogue\RogueShank.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\Characters\Rogue\RogueBlink.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\Characters\CharacterControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\Items\HealthPotion.cs" Line="29" Column="3" />
-      <File FileName="Assets\Scripts\Units\Items\ManaPotion.cs" Line="16" Column="24" />
-      <File FileName="Assets\Scripts\Units\UnitStats.cs" Line="77" Column="32" />
-      <File FileName="Assets\Scripts\Units\Enemies\EnemyDrop.cs" Line="11" Column="115" />
-      <File FileName="Assets\Scripts\Units\Characters\CharacterInventory.cs" Line="27" Column="5" />
-      <File FileName="Assets\Scripts\Units\Items\IItem.cs" Line="20" Column="49" />
+      <File FileName="Assets\Scripts\Units\Characters\CharacterAttack.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Units\Characters\Rogue\RogueToss.cs" Line="27" Column="5" />
+      <File FileName="Assets\Scripts\Units\Characters\Rogue\RogueBlink.cs" Line="84" Column="12" />
+      <File FileName="Assets\Scripts\Units\Characters\Rogue\RogueBlind.cs" Line="77" Column="101" />
+      <File FileName="Assets\Scripts\Units\Buffs\Effects\StunEffect.cs" Line="17" Column="1" />
+      <File FileName="Assets\Scripts\Units\Enemies\EnemyMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Units\Characters\Rogue\RogueShank.cs" Line="113" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

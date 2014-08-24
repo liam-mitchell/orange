@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Players\CameraController.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
      <Compile Include="Assets\Scripts\Players\UserInterface.cs" />
+     <Compile Include="Assets\Scripts\Units\Buffs\Effects\BleedEffect.cs" />
      <Compile Include="Assets\Scripts\Units\Buffs\Effects\ParryEffect.cs" />
      <Compile Include="Assets\Scripts\Units\Buffs\Effects\StunEffect.cs" />
      <Compile Include="Assets\Scripts\Units\Buffs\Modifiers\ArmorModifier.cs" />
@@ -65,8 +66,11 @@
      <Compile Include="Assets\Scripts\Units\Characters\Fighter\FighterParry.cs" />
      <Compile Include="Assets\Scripts\Units\Characters\Fighter\FighterShout.cs" />
      <Compile Include="Assets\Scripts\Units\Characters\Fighter\FighterWhirlwind.cs" />
+     <Compile Include="Assets\Scripts\Units\Characters\Rogue\KnifeToss.cs" />
+     <Compile Include="Assets\Scripts\Units\Characters\Rogue\RogueBlind.cs" />
      <Compile Include="Assets\Scripts\Units\Characters\Rogue\RogueBlink.cs" />
      <Compile Include="Assets\Scripts\Units\Characters\Rogue\RogueShank.cs" />
+     <Compile Include="Assets\Scripts\Units\Characters\Rogue\RogueToss.cs" />
      <Compile Include="Assets\Scripts\Units\Characters\Rogue\RogueTumble.cs" />
      <Compile Include="Assets\Scripts\Units\Enemies\EnemyAttack.cs" />
      <Compile Include="Assets\Scripts\Units\Enemies\EnemyControl.cs" />
@@ -86,6 +90,7 @@
      <Compile Include="Assets\Scripts\Utilities\GameInitialization.cs" />
      <Compile Include="Assets\Scripts\Utilities\Selectable.cs" />
      <Compile Include="Assets\Scripts\Utilities\StatsBar.cs" />
+     <Compile Include="Assets\Scripts\Utilities\TimedDestroy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
