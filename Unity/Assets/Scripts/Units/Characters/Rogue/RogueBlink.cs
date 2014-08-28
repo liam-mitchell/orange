@@ -8,6 +8,8 @@ public class RogueBlink : IAbility {
 	private bool blinking_;
 	private bool shanking_;
 	private bool shanked_this_shank_;
+
+	public ParticleSystem blinkParticles;
 	
 	public float blinkDuration;
 	private float blink_time_;
@@ -74,12 +76,11 @@ public class RogueBlink : IAbility {
 		
 		blink_time_ += Time.deltaTime;
 
-		ParticleSystem p = GetComponentInChildren<ParticleSystem>();
-		if (!p.isPlaying) p.Play();
+		if (!blinkParticles.isPlaying) blinkParticles.Play();
 		
 		if (blink_time_ > blinkDuration) {
 			blinking_ = false;
-			p.Stop();
+			blinkParticles.Stop();
 			shank();
 		}
 	}

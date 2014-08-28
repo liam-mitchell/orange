@@ -13,7 +13,7 @@ public class EnemyMovement : UnitMovement {
 
 	private EnemyControl enemy_control_;
 
-	private const float RECALC_MOVE_TIME = 0.5f;
+	private const float RECALC_MOVE_TIME = 1.0f;
 	private float retarget_time_;
 
 	public override void on_rmouse() { /* empty - hack t.t */ }
@@ -55,11 +55,25 @@ public class EnemyMovement : UnitMovement {
 		}
 	}
 
+	private void activate()
+	{
+		active_ = true;
+	}
+
+	private void update_active()
+	{
+		retarget_time_ += Time.deltaTime;
+		if (retarget_time_ > RECALC_MOVE_TIME) {
+			activate();
+			retarget_time_ = 0.0f;
+		}
+	}
+
 	// Update is called once per frame
 	protected void Update () {
 		if (!enemy_control_.interrupt_all(priority_, this)) return;
-		active_ = true;
 		if (in_range()) return;
+		update_active();
 		update_path();
 		update_turn();
 	}

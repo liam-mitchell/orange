@@ -100,6 +100,7 @@ public class UnitMovement : IAbility {
 	// Use this for initialization
 	new void Start () {
 		base.Start();
+		priority_ = 0;
 		animator_ = GetComponent<Animator>();
 		control = GetComponent<CharacterControl>();
 	}

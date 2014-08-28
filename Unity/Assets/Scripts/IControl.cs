@@ -111,6 +111,7 @@ public abstract class IControl : MonoBehaviour {
 	public void add_effect(IEffect effect)
 	{
 		effects_.Add (effect);
+		Debug.Log (effect);
 	}
 
 	public void remove_effect(IEffect effect)
